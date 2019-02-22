@@ -1,0 +1,90 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.monopoly-box {
+  border: 2px solid black;
+  width: 720px;
+  height: 720px;
+  position: relative;
+  margin: 0 auto;
+}
+
+#O {
+  display: flex;
+  flex-direction: row-reverse;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 0;
+}
+
+#a {
+  display: flex;
+  flex-direction: row-reverse;
+  position: absolute;
+  /* bottom: 0;
+  left: 0; */
+  margin: 0;
+  padding: 0;
+  transform-origin: left bottom;
+  transform: rotate(90deg);
+}
+
+#r {
+  display: flex;
+  flex-direction: row-reverse;
+  position: absolute;
+  /* top: 0;
+  left: 0; */
+  margin: 0;
+  padding: 0;
+  left: 0px;
+  /* transform-origin: left bottom; */
+  transform: rotate(180deg);
+}
+
+#o {
+  display: flex;
+  flex-direction: row-reverse;
+  position: absolute;
+  /* top: 0;
+  right: 0; */
+  top: 0px;
+  right: 81px;
+  margin: 0;
+  transform-origin: right top;
+  transform: rotate(270deg);
+}
+
+.property {
+  width: 61px;
+  max-width: 61px;
+  height: 80px;
+  font-size: 6px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+  text-align: center;
+}
+
+.property:first-child {
+  background-color: red;
+  width: 80px;
+  max-width: 80px;
+  border-left: 1.5px solid black;
+}
