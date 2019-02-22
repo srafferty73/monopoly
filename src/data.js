@@ -443,13 +443,13 @@ const data = {
 ],
 players: [
   {
-    id: 1,
+    id: 0,
     name: "",
     money: 1500,
     current_position: 0
   },
   {
-    id: 2,
+    id: 1,
     name: "",
     money: 1500,
     current_position: 0
