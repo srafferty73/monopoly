@@ -46,10 +46,10 @@ class MonopolyBox extends Component {
 
     return(
       <div className="monopoly-box">
-      <MonopolyList data={row1}/>
-      <MonopolyList data={row2}/>
-      <MonopolyList data={row3}/>
-      <MonopolyList data={row4}/>
+      <MonopolyList properties={row1} players={this.state.players}/>
+      <MonopolyList properties={row2} players={this.state.players}/>
+      <MonopolyList properties={row3} players={this.state.players}/>
+      <MonopolyList properties={row4} players={this.state.players}/>
       </div>
     )
   }
