@@ -458,7 +458,8 @@ players: [
 game: {
   current_player: 0,
   current_roll1: null,
-  current_roll2: null
+  current_roll2: null,
+  double_counter: 0
 }
 }
 

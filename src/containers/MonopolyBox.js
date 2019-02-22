@@ -22,37 +22,61 @@ class MonopolyBox extends Component {
     }
 
     playerMove(){
-      const currentPlayer = this.state.players[this.state.game.current_player];
-      const currentPosition = currentPlayer.current_position;
+      const currentPlayers = {...this.state.players};
+      const currentPosition = currentPlayers[this.state.game.current_player].current_position;
+
+
       const diceRoll = this.diceRoll();
       const total = diceRoll[0] + diceRoll[1];
 
-      // const updatedRoll1 = {current_roll1: diceRoll[0]};
-      // console.log(updatedRoll1);
-      // this.setState({game: updatedRoll1});
-      console.log(this.state.game.current_roll1);
-      console.log(this.state.game.current_roll2);
-      // const updatedRoll2 = {current_roll2: diceRoll[1]};
-      // this.setState({game: updatedRoll2});
-
-
-
       let newPosition = currentPosition+total;
+
+// GO TO JAIL
+      if (newPosition === 30){
+        newPosition = 10;
+      }
+
+// PASS GO
       if (newPosition > 39){
         newPosition = newPosition-40
+        console.log('hey', this.state.players[this.state.game.current_player]);
+        currentPlayers[this.state.game.current_player].money += 200;
+        this.setState({players: currentPlayers});
       }
-      const updated = currentPlayer.current_position = newPosition;
-      this.setState({currentPlayer: newPosition});
+
+
+      currentPlayers[this.state.game.current_player].current_position = newPosition;
+      this.setState({players: currentPlayers});
       const newPlayer = this.state.game.current_player;
       if (newPlayer === 0) {
-        const updatedGame = {current_player: 1, current_roll1: diceRoll[0], current_roll2: diceRoll[1]}
-        console.log('updatedGame', updatedGame);
-        return this.setState({game: updatedGame})
+        if (diceRoll[0] === diceRoll[1]){
+          const updatedDoubles = this.state.game.double_counter + 1;
+          const updatedGame = {current_player: 0, current_roll1: diceRoll[0], current_roll2: diceRoll[1], double_counter: updatedDoubles}
+          // console.log('updatedGame', updatedGame);
+          this.setState({game: updatedGame})
+        }
+        else {
+          const updatedGame = {current_player: 1, current_roll1: diceRoll[0], current_roll2: diceRoll[1], double_counter: 0}
+          // console.log('updatedGame', updatedGame);
+          // var theGame = {...this.state.game}
+          // theGame.current_player = 1;
+          this.setState({game: updatedGame})
+        }
       }
       else {
-        const updatedGame2 = {current_player: 0, current_roll1: diceRoll[0], current_roll2: diceRoll[1]}
-        console.log('updateGame2', updatedGame2);
-        return this.setState({game: updatedGame2})
+        if (diceRoll[0] === diceRoll[1]){
+          const updatedDoubles = this.state.game.double_counter + 1;
+          const updatedGame2 = {current_player: 1, current_roll1: diceRoll[0], current_roll2: diceRoll[1], double_counter: updatedDoubles}
+          // console.log('updatedGame2', updatedGame2);
+          this.setState({game: updatedGame2})
+        }
+        else {
+          const updatedGame2 = {current_player: 0, current_roll1: diceRoll[0], current_roll2: diceRoll[1], double_counter: 0}
+          // console.log('updateGame2', updatedGame2);
+          // var theGame = {...this.state.game}
+          // theGame.current_player = 0;
+          this.setState({game: updatedGame2})
+        }
       }
     }
 
