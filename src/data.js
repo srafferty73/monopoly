@@ -440,6 +440,20 @@ const data = {
     other_properties: [37],
     row: 4
   }
+],
+players: [
+  {
+    id: 1,
+    name: "",
+    money: 1500,
+    current_position: 0
+  },
+  {
+    id: 2,
+    name: "",
+    money: 1500,
+    current_position: 0
+  }
 ]
 }
 
