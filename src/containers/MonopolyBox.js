@@ -6,9 +6,23 @@ class MonopolyBox extends Component {
   constructor(props){
     super(props);
     this.state = data
-  }
+    }
+
+    dice_roll(){
+      const dice1 = Math.floor(Math.random() * (6) +1);
+      const dice2 = Math.floor(Math.random() * (6) +1);
+      const total = dice1 + dice2
+      if (dice1 === dice2){
+        console.log("Double");
+      }
+      console.log(dice1);
+      console.log(dice2);
+      console.log(total);
+    }
 
   render(){
+
+    this.dice_roll()
 
     const row1 = this.state.properties.filter((property) => {
       return property.row === 1
