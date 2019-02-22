@@ -21,6 +21,53 @@ code {
   margin: 0 auto;
 }
 
+.dice {
+  position: absolute;
+  width: 100px;
+  height: 40px;
+  left: calc(50% - 50px);
+  top: calc(50% - 20px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dice button {
+  width: 100px;
+  height: 40px;
+  border: 2px solid black;
+  border-radius: 50px;
+}
+
+.dice button:hover {
+  cursor:pointer;
+  border: 2px solid lightgreen;
+  background-color: rgba(0,0,0,.1);
+}
+
+.dice_numbers {
+  background-color: none;
+  position: absolute;
+  width: 100px;
+  height: 40px;
+  left: calc(50% - 50px);
+  top: calc(50% + 30px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dice_numbers div {
+  background-color: rgba(0,0,0,.2);
+  border: 2px solid black;
+  height: 100%;
+  width: 44%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+}
+
 #O {
   display: flex;
   flex-direction: row-reverse;
@@ -75,6 +122,7 @@ code {
   font-size: 6px;
   font-weight: 700;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
   border-top: 1px solid black;
@@ -88,4 +136,29 @@ code {
   max-width: 80px;
   border-left: 1.5px solid black;
   font-size: 12px;
+}
+
+.propertyName {
+  width: 100%;
+  /* background-color: blue; */
+}
+
+.one {
+  background-color: lightgreen;
+  width: 20px;
+  height: 20px;
+  color: lightgreen;
+  border-radius: 50px;
+  margin: 0 5px;
+  box-shadow: 0 0 10px black;
+}
+
+.two {
+  background-color: lightblue;
+  width: 20px;
+  height: 20px;
+  color: lightblue;
+  border-radius: 50px;
+  margin: 0 5px;
+  box-shadow: 0 0 10px black;
 }
