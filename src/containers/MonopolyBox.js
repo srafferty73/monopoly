@@ -32,7 +32,6 @@ class MonopolyBox extends Component {
 
     return(
       <div className="monopoly-box">
-      <p>Hi</p>
       <MonopolyList data={row1}/>
       <MonopolyList data={row2}/>
       <MonopolyList data={row3}/>
