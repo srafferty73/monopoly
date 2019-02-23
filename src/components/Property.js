@@ -1,8 +1,8 @@
-import React, {Component} from 'react';
+import React from 'react';
 
 const Property = ({allData, player1, player2}) => {
 
-  if (allData.color != ""){
+  if (allData.color !== ""){
     var colorBox = <div className={allData.color}></div>
   }
   else {

@@ -446,13 +446,15 @@ players: [
     id: 0,
     name: "",
     money: 1500,
-    current_position: 0
+    current_position: 0,
+    status: "end"
   },
   {
     id: 1,
     name: "",
     money: 1500,
-    current_position: 0
+    current_position: 0,
+    status: "end"
   }
 ],
 game: {

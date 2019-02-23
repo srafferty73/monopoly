@@ -45,6 +45,7 @@ code {
   top: 140px;
   background-color: beige;
   display: block;
+  z-index: 1;
   /* border-radius: 10px; */
 }
 
@@ -118,6 +119,22 @@ code {
   border: 2px solid black;
   border-radius: 50px;
   /* background-color: rgba(0,255,0,.1); */
+}
+
+.card-display-buy {
+  width: 100px;
+  height: 40px;
+  border: 2px solid black;
+  border-radius: 50px;
+  position: absolute;
+  bottom: -20px;
+  left: calc(50% - 50px);
+}
+
+.card-display-buy:hover {
+  cursor: pointer;
+  background-color: #c7f4c7;
+  z-index: 2;
 }
 
 .dice button:hover {

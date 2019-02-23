@@ -64,12 +64,22 @@ class MonopolyBox extends Component {
       const newPosition = 10;
       this.setStateHelper("players", this.state.game.current_player, "current_position", newPosition);
     }
+
+    if (this.state.game.double_counter === 3){
+      const newPosition = 10;
+      const newCounter = 0;
+      this.setStateHelper("players", this.state.game.current_player, "current_position", newPosition);
+      this.setStateHelper("game", "ignore", "double_counter", newCounter);
+      console.log("Sent to Jail!");
+      this.endTurn();
+    }
   }
 
   updateDoubleCounter(){
     let updatedDoubles = null;
     if (this.state.game.current_roll1 === this.state.game.current_roll2){
       updatedDoubles = this.state.game.double_counter + 1;
+      console.log("Double x",updatedDoubles);
       this.buttonToggleHelper('dice-roll', 'remove');
     }
     else {
@@ -83,20 +93,23 @@ class MonopolyBox extends Component {
     const currentPlayer = this.state.game.current_player;
     const currentPosition = this.state.players[currentPlayer].current_position;
     const currentProperty = this.state.properties[currentPosition];
-    this.buttonToggleHelper('buy-property', 'add');
 
-    if (currentProperty.owner != ""){
-      if (parseInt(currentProperty.owner) != currentPlayer){
-        console.log("Pay Rent", currentProperty, currentPlayer);
+    if (currentProperty.owner !== ""){
+      if (parseInt(currentProperty.owner) !== currentPlayer){
+        // console.log("Pay Rent", currentProperty, currentPlayer);
       }
       else {
-        console.log("Your Property", currentProperty, currentPlayer);
+        // console.log("Your Property", currentProperty, currentPlayer);
       }
     }
     else {
-      this.buttonToggleHelper('buy-property', 'remove');
-      console.log("Available", currentProperty.name, currentPlayer);
+      // console.log("Available", currentProperty.name, currentPlayer);
     }
+  }
+
+  setPlayerStatus(status){
+    var updatedStatus = status;
+    this.setStateHelper("players", this.state.game.current_player, "status", updatedStatus);
   }
 
   checkSwitch(){
@@ -117,20 +130,20 @@ class MonopolyBox extends Component {
   }
 
   playerMove(){
+    this.setPlayerStatus("start");
     this.diceRoll();
     this.findNewPosition();
     this.passGo();
-    this.goToJail();
     this.updateDoubleCounter();
+    this.goToJail();
     this.checkOwner();
 
   }
 
   endTurn(){
+    this.setPlayerStatus("end");
     this.checkSwitch();
-    console.log("Hi");
     this.buttonToggleHelper('end-turn', 'add');
-    this.buttonToggleHelper('buy-property', 'add');
     this.buttonToggleHelper('dice-roll', 'remove');
   }
   //   const currentPlayers = {...this.state.players};
@@ -219,13 +232,11 @@ class MonopolyBox extends Component {
       return property.row === 4
     });
 
-    const currentProperty = this.state.properties[this.state.players[this.state.game.current_player].current_position]
-
     return(
       <div className="monopoly-box">
         <PlayerPropertyList player={this.state.players[0]} properties={player1Properties}/>
         <div className="monopoly-container">
-          <CardDisplay propertyData={currentProperty}/>
+          <CardDisplay propertyData={this.state.properties[this.state.players[this.state.game.current_player].current_position]} playerData={this.state.players[this.state.game.current_player]}/>
           <DiceRoll playerMove={this.playerMove} endTurn={this.endTurn}/>
           <DiceNumbers dice1={this.state.game.current_roll1} dice2={this.state.game.current_roll2}/>
           <MonopolyList properties={row1} players={this.state.players}/>
