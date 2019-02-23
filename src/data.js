@@ -3,10 +3,10 @@ const data = {
   {
     position: 0,
     name: "GO",
-    color: null,
-    price: null,
-    houses: null,
-    owner: null,
+    color: "",
+    price: 0,
+    houses: 0,
+    owner: "",
     rent: [],
     other_properties: [],
     row: 1
@@ -25,7 +25,7 @@ const data = {
   {
     position: 2,
     name: "Community Chest",
-    color: null,
+    color: "",
     price: 0,
     houses: 0,
     owner: "",
@@ -39,7 +39,7 @@ const data = {
     color: "Brown",
     price: 60,
     houses: 0,
-    owner: "",
+    owner: "1",
     rent: [],
     other_properties: [1],
     row: 1
@@ -61,7 +61,7 @@ const data = {
     color: "",
     price: 200,
     houses: 0,
-    owner: "",
+    owner: "0",
     rent: [50,100,150,200],
     other_properties: [15,25,35],
     row: 1
@@ -72,7 +72,7 @@ const data = {
     color: "Light Blue",
     price: 100,
     houses: 0,
-    owner: "",
+    owner: "0",
     rent: [],
     other_properties: [8,9],
     row: 1
@@ -94,7 +94,7 @@ const data = {
     color: "Light Blue",
     price: 100,
     houses: 0,
-    owner: "",
+    owner: "1",
     rent: [],
     other_properties: [6,9],
     row: 1

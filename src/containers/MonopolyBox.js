@@ -13,15 +13,12 @@ class MonopolyBox extends Component {
 
   setStateHelper(stateName, arrayIndex, propertyName, newValue){
     const stateToUpdate = this.state[stateName];
-    // console.log(stateToUpdate);
     if (arrayIndex === "ignore"){
       stateToUpdate[propertyName] = newValue;
       this.setState({[stateName]: stateToUpdate});
-      // console.log(this.state[stateName]);
     }
     else {
-      console.log(stateToUpdate[arrayIndex][propertyName]);
-      stateToUpdate[0][propertyName] = newValue;
+      stateToUpdate[arrayIndex][propertyName] = newValue;
       this.setState({[stateName]: stateToUpdate});
     }
   }
@@ -29,22 +26,86 @@ class MonopolyBox extends Component {
   diceRoll(){
     const dice1 = Math.floor(Math.random() * (6) +1);
     const dice2 = Math.floor(Math.random() * (6) +1);
-
     this.setStateHelper("game", "ignore", "current_roll1", dice1);
     this.setStateHelper("game", "ignore", "current_roll2", dice2);
   }
 
   findNewPosition(){
     const total = this.state.game.current_roll1 + this.state.game.current_roll2;
-    // console.log(total);
-    const nPosition = this.state.players[this.state.game.current_player].current_position;
-    const newPosition = nPosition + total;
+    const newPosition = this.state.players[this.state.game.current_player].current_position + total;
     this.setStateHelper("players", this.state.game.current_player, "current_position", newPosition);
+  }
+
+  passGo(){
+    if (this.state.players[this.state.game.current_player].current_position > 39){
+      const newPosition = this.state.players[this.state.game.current_player].current_position - 40;
+      const updatedMoney = this.state.players[this.state.game.current_player].money + 200;
+      this.setStateHelper("players", this.state.game.current_player, "current_position", newPosition);
+      this.setStateHelper("players", this.state.game.current_player, "money", updatedMoney);
+    }
+  }
+
+  goToJail(){
+    if (this.state.players[this.state.game.current_player].current_position === 30){
+      const newPosition = 10;
+      this.setStateHelper("players", this.state.game.current_player, "current_position", newPosition);
+    }
+  }
+
+  updateDoubleCounter(){
+    let updatedDoubles = null;
+    if (this.state.game.current_roll1 === this.state.game.current_roll2){
+      updatedDoubles = this.state.game.double_counter + 1;
+    }
+    else {
+      updatedDoubles = 0
+    }
+    this.setStateHelper("game", "ignore", "double_counter", updatedDoubles);
+  }
+
+  checkOwner(){
+    const currentPlayer = this.state.game.current_player;
+    const currentPosition = this.state.players[currentPlayer].current_position;
+    const currentProperty = this.state.properties[currentPosition];
+
+    if (currentProperty.owner != ""){
+      if (parseInt(currentProperty.owner) != currentPlayer){
+        console.log("Pay Rent", currentProperty, currentPlayer);
+      }
+      else {
+        console.log("Your Property", currentProperty, currentPlayer);
+      }
+    }
+    else {
+      console.log("Available", currentProperty.name, currentPlayer);
+    }
+  }
+
+  checkSwitch(){
+    if (this.state.game.double_counter === 0){
+      this.switchPlayer();
+    }
+  }
+
+  switchPlayer(){
+    let newPlayer = null;
+    if (this.state.game.current_player === 0){
+      newPlayer = 1;
+    }
+    else {
+      newPlayer = 0;
+    }
+    this.setStateHelper("game", "ignore", "current_player", newPlayer);
   }
 
   playerMove(){
     this.diceRoll();
     this.findNewPosition();
+    this.passGo();
+    this.goToJail();
+    this.updateDoubleCounter();
+    this.checkOwner();
+    this.checkSwitch();
   }
   //   const currentPlayers = {...this.state.players};
   //   const currentPosition = currentPlayers[this.state.game.current_player].current_position;
