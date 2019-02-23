@@ -36,12 +36,76 @@ code {
   margin-top: 20px;
 }
 
+.card-display{
+  position: absolute;
+  border: 2px solid black;
+  width: 200px;
+  height: 300px;
+  left: calc(50% - 102px);
+  top: 140px;
+  background-color: beige;
+  display: block;
+  /* border-radius: 10px; */
+}
+
+.card-display .no-color {
+  height: 40px;
+}
+
+.card-display .Brown {
+  height: 40px;
+}
+
+.card-display .LightBlue {
+  height: 40px;
+}
+
+.card-display .Pink {
+  height: 40px;
+}
+
+.card-display .Orange {
+  height: 40px;
+}
+
+.card-display .Red {
+  height: 40px;
+}
+
+.card-display .Yellow {
+  height: 40px;
+}
+
+.card-display .Green {
+  height: 40px;
+}
+
+.card-display .DarkBlue {
+  height: 40px;
+}
+
+.card-display h2 {
+  height: 100px;
+  background-color: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: 0;
+}
+
+.card-display h3 {
+  width: 100%;
+  margin: 0;
+  text-align: center;
+}
+
 .dice {
   position: absolute;
   width: 310px;
   height: 40px;
   left: calc(50% - 155px);
-  top: calc(50% - 20px);
+  top: calc(50% + 120px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -68,7 +132,7 @@ code {
   width: 100px;
   height: 40px;
   left: calc(50% - 50px);
-  top: calc(50% + 30px);
+  top: calc(50% + 180px);
   display: flex;
   align-items: center;
   justify-content: space-between;

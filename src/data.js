@@ -6,7 +6,7 @@ const data = {
     color: "",
     price: 0,
     houses: 0,
-    owner: "",
+    owner: "Admin",
     rent: [],
     other_properties: [],
     row: 1
@@ -28,7 +28,7 @@ const data = {
     color: "",
     price: 0,
     houses: 0,
-    owner: "",
+    owner: "Admin",
     rent: [],
     other_properties: [],
     row: 1
@@ -50,7 +50,7 @@ const data = {
     color: "",
     price: 0,
     houses: 0,
-    owner: "",
+    owner: "Admin",
     rent: [200],
     other_properties: [],
     row: 1
@@ -83,7 +83,7 @@ const data = {
     color: "",
     price: 0,
     houses: 0,
-    owner: "",
+    owner: "Admin",
     rent: [],
     other_properties: [],
     row: 1
@@ -116,7 +116,7 @@ const data = {
     color: "",
     price: 0,
     houses: 0,
-    owner: "",
+    owner: "Admin",
     rent: [],
     other_properties: [],
     row: 2
@@ -193,7 +193,7 @@ const data = {
     color: "",
     price: 0,
     houses: 0,
-    owner: "",
+    owner: "Admin",
     rent: [],
     other_properties: [],
     row: 2
@@ -226,7 +226,7 @@ const data = {
     color: "",
     price: 0,
     houses: 0,
-    owner: "",
+    owner: "Admin",
     rent: [],
     other_properties: [],
     row: 3
@@ -248,7 +248,7 @@ const data = {
     color: "",
     price: 0,
     houses: 0,
-    owner: "",
+    owner: "Admin",
     rent: [],
     other_properties: [],
     row: 3
@@ -336,7 +336,7 @@ const data = {
     color: "",
     price: 0,
     houses: 0,
-    owner: "",
+    owner: "Admin",
     rent: [],
     other_properties: [],
     row: 4
@@ -369,7 +369,7 @@ const data = {
     color: "",
     price: 0,
     houses: 0,
-    owner: "",
+    owner: "Admin",
     rent: [],
     other_properties: [],
     row: 4
@@ -402,7 +402,7 @@ const data = {
     color: "",
     price: 0,
     houses: 0,
-    owner: "",
+    owner: "Admin",
     rent: [],
     other_properties: [],
     row: 4
@@ -424,7 +424,7 @@ const data = {
     color: "",
     price: 0,
     houses: 0,
-    owner: "",
+    owner: "Admin",
     rent: [100],
     other_properties: [],
     row: 4
