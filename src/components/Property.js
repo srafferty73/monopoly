@@ -6,7 +6,7 @@ const Property = ({allData, player1, player2}) => {
     var colorBox = <div className={allData.color}></div>
   }
   else {
-    var colorBox = <div className="no-color"></div>
+    var noColorBox = <div className="no-color"></div>
   }
 
   if (allData.position === player1){
@@ -20,6 +20,7 @@ const Property = ({allData, player1, player2}) => {
   return(
     <div className="property">
       {colorBox}
+      {noColorBox}
       <div className='propertyName'>
       {allData.name}
       </div>

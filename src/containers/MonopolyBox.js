@@ -3,12 +3,14 @@ import data from '../data.js';
 import MonopolyList from '../components/MonopolyList';
 import DiceRoll from '../components/DiceRoll';
 import DiceNumbers from '../components/DiceNumbers';
+import PlayerPropertyList from '../components/PlayerPropertyList';
 
 class MonopolyBox extends Component {
   constructor(props){
     super(props);
     this.state = data
-    this.playerMove = this.playerMove.bind(this);
+    this.playerMove = this.playerMove.bind(this)
+    this.endTurn = this.endTurn.bind(this);
   }
 
   setStateHelper(stateName, arrayIndex, propertyName, newValue){
@@ -25,11 +27,16 @@ class MonopolyBox extends Component {
 
   buttonToggleHelper(id, toggleValue){
     const button = document.getElementById(id);
-    button.disabled = toggleValue;
+    if (toggleValue === "add"){
+      button.classList.add('disabled-button');
+    }
+    if (toggleValue === "remove"){
+      button.classList.remove('disabled-button');
+    }
   }
 
   diceRoll(){
-    this.buttonToggleHelper('dice-roll', true);
+    this.buttonToggleHelper('dice-roll', 'add');
     const dice1 = Math.floor(Math.random() * (6) +1);
     const dice2 = Math.floor(Math.random() * (6) +1);
     this.setStateHelper("game", "ignore", "current_roll1", dice1);
@@ -62,10 +69,11 @@ class MonopolyBox extends Component {
     let updatedDoubles = null;
     if (this.state.game.current_roll1 === this.state.game.current_roll2){
       updatedDoubles = this.state.game.double_counter + 1;
-      this.buttonToggleHelper('dice-roll', false);
+      this.buttonToggleHelper('dice-roll', 'remove');
     }
     else {
       updatedDoubles = 0
+      this.buttonToggleHelper('end-turn', 'remove');
     }
     this.setStateHelper("game", "ignore", "double_counter", updatedDoubles);
   }
@@ -84,6 +92,7 @@ class MonopolyBox extends Component {
       }
     }
     else {
+      this.buttonToggleHelper('buy-property', 'remove');
       console.log("Available", currentProperty.name, currentPlayer);
     }
   }
@@ -113,6 +122,13 @@ class MonopolyBox extends Component {
     this.updateDoubleCounter();
     this.checkOwner();
     this.checkSwitch();
+  }
+
+  endTurn(){
+    console.log("Hi");
+    this.buttonToggleHelper('end-turn', 'add');
+    this.buttonToggleHelper('buy-property', 'add');
+    this.buttonToggleHelper('dice-roll', 'remove');
   }
   //   const currentPlayers = {...this.state.players};
   //   const currentPosition = currentPlayers[this.state.game.current_player].current_position;
@@ -176,6 +192,14 @@ class MonopolyBox extends Component {
 
   render(){
 
+    const player1Properties = this.state.properties.filter((property) => {
+      return parseInt(property.owner) === 0;
+    });
+
+    const player2Properties = this.state.properties.filter((property) => {
+      return parseInt(property.owner) === 1;
+    });
+
     const row1 = this.state.properties.filter((property) => {
       return property.row === 1
     });
@@ -194,14 +218,20 @@ class MonopolyBox extends Component {
 
     return(
       <div className="monopoly-box">
-        <DiceRoll playerMove={this.playerMove}/>
-        <DiceNumbers dice1={this.state.game.current_roll1} dice2={this.state.game.current_roll2}/>
-        <MonopolyList properties={row1} players={this.state.players}/>
-        <MonopolyList properties={row2} players={this.state.players}/>
-        <MonopolyList properties={row3} players={this.state.players}/>
-        <MonopolyList properties={row4} players={this.state.players}/>
+        <span className="details">{this.state.properties[this.state.players[this.state.game.current_player].current_position].name}</span>
+        <PlayerPropertyList player={this.state.players[0]} properties={player1Properties}/>
+        <div className="monopoly-container">
+          <DiceRoll playerMove={this.playerMove} endTurn={this.endTurn}/>
+          <DiceNumbers dice1={this.state.game.current_roll1} dice2={this.state.game.current_roll2}/>
+          <MonopolyList properties={row1} players={this.state.players}/>
+          <MonopolyList properties={row2} players={this.state.players}/>
+          <MonopolyList properties={row3} players={this.state.players}/>
+          <MonopolyList properties={row4} players={this.state.players}/>
+        </div>
+        <PlayerPropertyList player={this.state.players[1]} properties={player2Properties}/>
       </div>
     )
+
   }
 }
 
