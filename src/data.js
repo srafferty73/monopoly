@@ -237,7 +237,7 @@ const data = {
     color: "Red",
     price: 220,
     houses: 0,
-    owner: "",
+    owner: "0",
     rent: [],
     other_properties: [23,24],
     row: 3
