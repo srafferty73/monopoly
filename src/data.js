@@ -454,7 +454,13 @@ players: [
     money: 1500,
     current_position: 0
   }
-]
+],
+game: {
+  current_player: 0,
+  current_roll1: null,
+  current_roll2: null,
+  double_counter: 0
+}
 }
 
 export default data;
