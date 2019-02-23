@@ -23,7 +23,13 @@ class MonopolyBox extends Component {
     }
   }
 
+  buttonToggleHelper(id, toggleValue){
+    const button = document.getElementById(id);
+    button.disabled = toggleValue;
+  }
+
   diceRoll(){
+    this.buttonToggleHelper('dice-roll', true);
     const dice1 = Math.floor(Math.random() * (6) +1);
     const dice2 = Math.floor(Math.random() * (6) +1);
     this.setStateHelper("game", "ignore", "current_roll1", dice1);
@@ -56,6 +62,7 @@ class MonopolyBox extends Component {
     let updatedDoubles = null;
     if (this.state.game.current_roll1 === this.state.game.current_roll2){
       updatedDoubles = this.state.game.double_counter + 1;
+      this.buttonToggleHelper('dice-roll', false);
     }
     else {
       updatedDoubles = 0

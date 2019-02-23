@@ -89,6 +89,30 @@ code {
   transform: rotate(90deg);
 }
 
+#O .property:first-child .propertyName {
+  transform: rotate(315deg);
+  /*border-top: 1px solid black;
+  border-right: 1px solid black; */
+}
+
+#a .property:first-child .propertyName {
+  transform: rotate(315deg);
+  /*border-top: 1px solid black;
+  border-right: 1px solid black; */
+}
+
+#r .property:first-child .propertyName {
+  transform: rotate(315deg);
+  /*border-top: 1px solid black;
+  border-right: 1px solid black; */
+}
+
+#o .property:first-child .propertyName {
+  transform: rotate(315deg);
+  /*border-top: 1px solid black;
+  border-right: 1px solid black; */
+}
+
 #r {
   display: flex;
   flex-direction: row-reverse;
@@ -121,9 +145,7 @@ code {
   height: 80px;
   font-size: 6px;
   font-weight: 700;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
+  display: block;
   justify-content: center;
   border-top: 1px solid black;
   border-left: 1px solid black;
@@ -131,34 +153,122 @@ code {
 }
 
 .property:first-child {
-  background-color: red;
+  background-color: beige;
   width: 80px;
   max-width: 80px;
-  border-left: 1.5px solid black;
+  /* border-left: 1.5px solid black; */
+  /* border-top: 1px solid rgba(0,0,0,0); */
   font-size: 12px;
+}
+
+.property:last-child {
+  border-left: none;
+  width: 62px;
+  max-width: 62px;
 }
 
 .propertyName {
   width: 100%;
-  /* background-color: blue; */
+  height: 30px;
+  min-height: 30px;
+  background-color: none;
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.player-tokens {
+  background-color: none;
+  width: 100%;
+  height: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
 }
 
 .one {
   background-color: lightgreen;
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
   color: lightgreen;
   border-radius: 50px;
   margin: 0 5px;
   box-shadow: 0 0 10px black;
+  border: 1px solid black;
 }
 
 .two {
   background-color: lightblue;
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
   color: lightblue;
   border-radius: 50px;
   margin: 0 5px;
   box-shadow: 0 0 10px black;
+  border: 1px solid black;
+}
+
+.Brown {
+  width: 100%;
+  height: 20px;
+  background-color: brown;
+  border-bottom: 1px solid black;
+}
+
+.LightBlue {
+  width: 100%;
+  height: 20px;
+  background-color: lightblue;
+  border-bottom: 1px solid black;
+  margin: 0;
+}
+
+.Pink {
+  width: 100%;
+  height: 20px;
+  background-color: pink;
+  border-bottom: 1px solid black;
+}
+
+.Orange {
+  width: 100%;
+  height: 20px;
+  background-color: orange;
+  border-bottom: 1px solid black;
+}
+
+.Red {
+  width: 100%;
+  height: 20px;
+  background-color: red;
+  border-bottom: 1px solid black;
+}
+
+.Yellow {
+  width: 100%;
+  height: 20px;
+  background-color: yellow;
+  border-bottom: 1px solid black;
+}
+
+.Green {
+  width: 100%;
+  height: 20px;
+  background-color: green;
+  border-bottom: 1px solid black;
+}
+
+.DarkBlue {
+  width: 100%;
+  height: 20px;
+  background-color: blue;
+  border-bottom: 1px solid black;
+}
+
+.no-color {
+  width: 100%;
+  height: 20px;
+  background-color: none;
+  border-bottom: 1px solid rgba(0,0,0,0);
 }

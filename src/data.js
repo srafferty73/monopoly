@@ -69,7 +69,7 @@ const data = {
   {
     position: 6,
     name: "The Angel Islington",
-    color: "Light Blue",
+    color: "LightBlue",
     price: 100,
     houses: 0,
     owner: "0",
@@ -91,7 +91,7 @@ const data = {
   {
     position: 8,
     name: "Euston Road",
-    color: "Light Blue",
+    color: "LightBlue",
     price: 100,
     houses: 0,
     owner: "1",
@@ -102,7 +102,7 @@ const data = {
   {
     position: 9,
     name: "Pentonville Road",
-    color: "Light Blue",
+    color: "LightBlue",
     price: 120,
     houses: 0,
     owner: "",
@@ -410,7 +410,7 @@ const data = {
   {
     position: 37,
     name: "Park Lane",
-    color: "Dark Blue",
+    color: "DarkBlue",
     price: 350,
     houses: 0,
     owner: "",
@@ -432,7 +432,7 @@ const data = {
   {
     position: 39,
     name: "Mayfair",
-    color: "Dark Blue",
+    color: "DarkBlue",
     price: 400,
     houses: 0,
     owner: "",

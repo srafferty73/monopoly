@@ -3,7 +3,7 @@ import React from 'react';
 const DiceRoll = ({playerMove}) => {
   return(
     <div className='dice'>
-      <button onClick={playerMove}>Roll Dice</button>
+      <button id="dice-roll" onClick={playerMove}>Roll Dice</button>
     </div>
   )
 }

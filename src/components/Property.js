@@ -2,6 +2,13 @@ import React, {Component} from 'react';
 
 const Property = ({allData, player1, player2}) => {
 
+  if (allData.color != ""){
+    var colorBox = <div className={allData.color}></div>
+  }
+  else {
+    var colorBox = <div className="no-color"></div>
+  }
+
   if (allData.position === player1){
   var checkPlayer1 = <div className='one'>1</div>
   }
@@ -12,11 +19,14 @@ const Property = ({allData, player1, player2}) => {
 
   return(
     <div className="property">
+      {colorBox}
       <div className='propertyName'>
       {allData.name}
       </div>
-    {checkPlayer1}
-    {checkPlayer2}
+      <div className='player-tokens'>
+        {checkPlayer1}
+        {checkPlayer2}
+      </div>
     </div>
   )
 
