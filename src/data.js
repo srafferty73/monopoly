@@ -444,14 +444,14 @@ const data = {
 players: [
   {
     id: 0,
-    name: "",
+    name: "John",
     money: 1500,
     current_position: 0,
     status: "end"
   },
   {
     id: 1,
-    name: "",
+    name: "Bill",
     money: 1500,
     current_position: 0,
     status: "end"

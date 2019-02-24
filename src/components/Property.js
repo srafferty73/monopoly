@@ -10,11 +10,11 @@ const Property = ({allData, player1, player2}) => {
   }
 
   if (allData.position === player1){
-  var checkPlayer1 = <div className='one'>1</div>
+  var checkPlayer1 = <div className='one'><i class="fas fa-dog"></i></div>
   }
 
   if (allData.position === player2){
-  var checkPlayer2 = <div className='two'>2</div>
+  var checkPlayer2 = <div className='two'><i class="fas fa-car-side"></i></div>
   }
 
   return(
