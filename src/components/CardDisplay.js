@@ -1,6 +1,6 @@
 import React from 'react';
 
-const CardDisplay = ({propertyData, playerData}) => {
+const CardDisplay = ({propertyData, playerData, payRent}) => {
 
   if (propertyData.color !== ""){
     var colorBox = <div id="card-display-color" className={propertyData.color}></div>
@@ -18,6 +18,9 @@ const CardDisplay = ({propertyData, playerData}) => {
     }
     else {
       priceBox = <h3 className="card-display-price">Owner: Player {propertyData.owner}</h3>
+      if ((parseInt(propertyData.owner) !== playerData.id) && (playerData.status === "start")){
+        var payRentButton = <button id="pay-rent" className="card-display-pay" onClick={payRent}>Pay Rent</button>
+      }
     }
   }
   return(
@@ -27,6 +30,7 @@ const CardDisplay = ({propertyData, playerData}) => {
       <h2>{propertyData.name}</h2>
       {priceBox}
       {buyBox}
+      {payRentButton}
     </div>
   )
 }

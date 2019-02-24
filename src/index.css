@@ -121,7 +121,7 @@ code {
   /* background-color: rgba(0,255,0,.1); */
 }
 
-.card-display-buy {
+.card-display button {
   width: 100px;
   height: 40px;
   border: 2px solid black;
@@ -131,7 +131,7 @@ code {
   left: calc(50% - 50px);
 }
 
-.card-display-buy:hover {
+.card-display button:hover {
   cursor: pointer;
   background-color: #c7f4c7;
   z-index: 2;

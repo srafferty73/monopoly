@@ -12,6 +12,7 @@ class MonopolyBox extends Component {
     this.state = data
     this.playerMove = this.playerMove.bind(this)
     this.endTurn = this.endTurn.bind(this);
+    this.payRent = this.payRent.bind(this);
   }
 
   setStateHelper(stateName, arrayIndex, propertyName, newValue){
@@ -95,7 +96,8 @@ class MonopolyBox extends Component {
     const currentProperty = this.state.properties[currentPosition];
 
     if (currentProperty.owner !== ""){
-      if (parseInt(currentProperty.owner) !== currentPlayer){
+      if ((parseInt(currentProperty.owner) !== currentPlayer) && (currentProperty.owner !== "Admin")){
+        this.buttonToggleHelper('end-turn', 'add');
         // console.log("Pay Rent", currentProperty, currentPlayer);
       }
       else {
@@ -127,6 +129,11 @@ class MonopolyBox extends Component {
       newPlayer = 0;
     }
     this.setStateHelper("game", "ignore", "current_player", newPlayer);
+  }
+
+  payRent(){
+    this.buttonToggleHelper('pay-rent', 'add');
+    this.buttonToggleHelper('end-turn', 'remove');
   }
 
   playerMove(){
@@ -236,7 +243,7 @@ class MonopolyBox extends Component {
       <div className="monopoly-box">
         <PlayerPropertyList player={this.state.players[0]} properties={player1Properties}/>
         <div className="monopoly-container">
-          <CardDisplay propertyData={this.state.properties[this.state.players[this.state.game.current_player].current_position]} playerData={this.state.players[this.state.game.current_player]}/>
+          <CardDisplay propertyData={this.state.properties[this.state.players[this.state.game.current_player].current_position]} playerData={this.state.players[this.state.game.current_player]} payRent={this.payRent}/>
           <DiceRoll playerMove={this.playerMove} endTurn={this.endTurn}/>
           <DiceNumbers dice1={this.state.game.current_roll1} dice2={this.state.game.current_roll2}/>
           <MonopolyList properties={row1} players={this.state.players}/>
