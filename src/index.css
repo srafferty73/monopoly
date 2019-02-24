@@ -6,6 +6,14 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-family: 'Varela Round', sans-serif;
+
+
+}
+
+button {
+  font-family: 'Varela Round', sans-serif;
+
 }
 
 code {
@@ -19,6 +27,10 @@ code {
   height: 100%;
   display: flex;
   justify-content: center;
+  background-color: blue;
+  background: linear-gradient(to right, #FF8235, #30E8BF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
 }
 
 .playerProperties {
@@ -27,13 +39,34 @@ code {
   margin: 20px;
 }
 
+.player-name-icon {
+  display: flex;
+  align-items: center;
+  background-color: rgba(255,255,255,.5);
+  padding: 2px 10px;
+  box-shadow: -10px 25px 50px rgba(0,0,0,.5);
+  border: 1px solid black;
+}
+
+.player-name-icon i {
+  font-size: 34px;
+  margin-right: 10px;
+  background-color: none;
+  color: rgba(0,0,0,1);
+}
+.player-name-icon h2 {
+  background-color: none;
+}
+
 .monopoly-container {
-  border: 2px solid black;
+  border: 1px solid black;
+  background-color: white;
   width: 720px;
   min-width: 720px;
   height: 720px;
   position: relative;
-  margin-top: 20px;
+  margin: 20px 30px;
+  box-shadow: -10px 25px 50px rgba(0,0,0,.5);
 }
 
 .card-display{

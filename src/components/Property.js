@@ -9,12 +9,12 @@ const Property = ({allData, player1, player2}) => {
     var noColorBox = <div className="no-color"></div>
   }
 
-  if (allData.position === player1){
-  var checkPlayer1 = <div className='one'><i class="fas fa-dog"></i></div>
+  if (allData.position === player1.current_position){
+  var checkPlayer1 = <div className='one'><i class={player1.icon}></i></div>
   }
 
-  if (allData.position === player2){
-  var checkPlayer2 = <div className='two'><i class="fas fa-car-side"></i></div>
+  if (allData.position === player2.current_position){
+  var checkPlayer2 = <div className='two'><i class={player2.icon}></i></div>
   }
 
   return(

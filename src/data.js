@@ -447,14 +447,16 @@ players: [
     name: "John",
     money: 1500,
     current_position: 0,
-    status: "end"
+    status: "end",
+    icon:"fas fa-dog"
   },
   {
     id: 1,
     name: "Bill",
     money: 1500,
     current_position: 0,
-    status: "end"
+    status: "end",
+    icon: "fas fa-car-side"
   }
 ],
 game: {

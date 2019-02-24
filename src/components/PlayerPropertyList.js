@@ -9,7 +9,10 @@ const PlayerPropertyList = ({player, properties}) => {
   })
 return(
   <div className="playerProperties">
-    <h2>{player.name}</h2>
+    <div className="player-name-icon">
+      <i className={player.icon}/>
+      <h2>{player.name}</h2>
+    </div>
     <h3>£{player.money}</h3>
     {playerPropertyNodes}
   </div>
