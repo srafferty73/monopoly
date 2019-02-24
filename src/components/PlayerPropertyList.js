@@ -12,8 +12,12 @@ return(
     <div className="player-name-icon">
       <i className={player.icon}/>
       <h2>{player.name}</h2>
+        <div className="player-money">
+          <img className="pound-sterling" src="pound-sterling.png"></img>
+          <h3>{player.money}</h3>
+        </div>
     </div>
-    <h3>£{player.money}</h3>
+
     {playerPropertyNodes}
   </div>
 )
