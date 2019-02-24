@@ -5,7 +5,7 @@ const PlayerProperty = ({propertyData}) => {
     <div className="playerProperty">
     <div id="smallColors" className={propertyData.color}/>
     <p>{propertyData.name}</p>
-    <button>Buy</button>
+    <button>Buy Houses</button>
     <button>Sell</button>
     </div>
   )

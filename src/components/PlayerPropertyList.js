@@ -17,8 +17,10 @@ return(
           <h3>{player.money}</h3>
         </div>
     </div>
+    <div className="playerProperties-list">
+      {playerPropertyNodes}
+    </div>
 
-    {playerPropertyNodes}
   </div>
 )
 }

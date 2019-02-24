@@ -7,13 +7,10 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-family: 'Varela Round', sans-serif;
-
-
 }
 
 button {
   font-family: 'Varela Round', sans-serif;
-
 }
 
 code {
@@ -29,14 +26,12 @@ code {
   justify-content: center;
   background-color: blue;
   background: linear-gradient(to right, #FF8235, #30E8BF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-
 }
 
 .playerProperties {
   background-color: none;
   width: 300px;
-  margin: 20px;
+  margin: 24px 24px;
 }
 
 .player-name-icon {
@@ -56,6 +51,7 @@ code {
   background-color: none;
   color: rgba(0,0,0,1);
 }
+
 .player-name-icon h2 {
   background-color: none;
 }
@@ -79,6 +75,63 @@ code {
   margin-left: 5px;
 }
 
+.playerProperties-list {
+  background-color: white;
+  background-color: rgba(255,255,255,.8);
+  padding: 10px;
+  box-shadow: -10px 25px 50px rgba(0,0,0,.5);
+  border: 1px solid black;
+}
+
+.playerProperty {
+  background-color: none;
+  margin-bottom: 10px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.playerProperty:last-child{
+  margin-bottom: 0;
+}
+
+#smallColors {
+  max-width: 2px;
+  height: 30px;
+  border: none;
+  border-left: 1px solid black;
+
+}
+
+.playerProperty p {
+  padding-left: 5px;
+  font-size: 12px;
+}
+
+.playerProperty button {
+  height: 30px;
+  border: none;
+  cursor: pointer;
+  background-color: rgba(255,255,255,0.5);
+  border-radius: 5px;
+}
+
+.playerProperty button:hover {
+  background-color: rgba(0,0,0,0.1);
+}
+
+.playerProperty button:nth-child(3){
+  position: absolute;
+  right: 40px;
+}
+
+.playerProperty button:last-child{
+  background-color: none;
+  position: absolute;
+  right: 0;
+}
+
 .monopoly-container {
   border: 1px solid black;
   background-color: white;
@@ -86,7 +139,7 @@ code {
   min-width: 720px;
   height: 720px;
   position: relative;
-  margin: 20px 30px;
+  margin: 24px 30px;
   box-shadow: -10px 25px 50px rgba(0,0,0,.5);
 }
 
@@ -100,7 +153,6 @@ code {
   background-color: beige;
   display: block;
   z-index: 1;
-  /* border-radius: 10px; */
 }
 
 .card-display .no-color {
@@ -172,7 +224,6 @@ code {
   height: 40px;
   border: 2px solid black;
   border-radius: 50px;
-  /* background-color: rgba(0,255,0,.1); */
 }
 
 .card-display button {
@@ -193,7 +244,6 @@ code {
 
 .dice button:hover {
   cursor:pointer;
-  /* border: 2px solid lightgreen; */
   background-color: rgba(0,255,0,.2);
 }
 
@@ -210,8 +260,6 @@ code {
 }
 
 .dice_numbers div {
-  /* background-color: rgba(0,0,0,.2); */
-  /* border: 2px solid black; */
   height: 100%;
   width: 44%;
   max-width: 44%;
@@ -238,8 +286,6 @@ code {
   display: flex;
   flex-direction: row-reverse;
   position: absolute;
-  /* bottom: 0;
-  left: 0; */
   margin: 0;
   padding: 0;
   transform-origin: left bottom;
@@ -247,40 +293,28 @@ code {
 }
 
 #O .property:first-child .propertyName {
-
   transform: rotate(315deg);
-  /*border-top: 1px solid black;
-  border-right: 1px solid black; */
 }
 
 #a .property:first-child .propertyName {
   transform: rotate(315deg);
-  /*border-top: 1px solid black;
-  border-right: 1px solid black; */
 }
 
 #r .property:first-child .propertyName {
   transform: rotate(315deg);
-  /*border-top: 1px solid black;
-  border-right: 1px solid black; */
 }
 
 #o .property:first-child .propertyName {
   transform: rotate(315deg);
-  /*border-top: 1px solid black;
-  border-right: 1px solid black; */
 }
 
 #r {
   display: flex;
   flex-direction: row-reverse;
   position: absolute;
-  /* top: 0;
-  left: 0; */
   margin: 0;
   padding: 0;
   left: 0px;
-  /* transform-origin: left bottom; */
   transform: rotate(180deg);
 }
 
@@ -288,8 +322,6 @@ code {
   display: flex;
   flex-direction: row-reverse;
   position: absolute;
-  /* top: 0;
-  right: 0; */
   top: 0px;
   right: 81px;
   margin: 0;
@@ -314,8 +346,6 @@ code {
   background-color: beige;
   width: 80px;
   max-width: 80px;
-  /* border-left: 1.5px solid black; */
-  /* border-top: 1px solid rgba(0,0,0,0); */
   font-size: 12px;
 }
 
@@ -347,15 +377,12 @@ code {
 
 .one {
   background-color: none;
-  /* position: absolute; */
   font-size: 20px;
   width: 24px;
   height: 24px;
   color: black;
   border-radius: 50px;
   margin: 0 5px;
-  /* box-shadow: 0 0 2px black;
-  border: 1px solid black; */
 }
 
 .two {
@@ -366,8 +393,6 @@ code {
   color: black;
   border-radius: 50px;
   margin: 0 5px;
-  /* box-shadow: 0 0 2px black;
-  border: 1px solid black; */
 }
 
 .Brown {
@@ -432,53 +457,6 @@ code {
   height: 20px;
   background-color: none;
   border-bottom: 1px solid rgba(0,0,0,0);
-}
-
-.playerProperty {
-  background-color: beige;
-  margin-bottom: 5px;
-  height: 30px;
-  display: flex;
-  align-items: center;
-  position: relative;
-  border: 1px solid black;
-}
-
-#smallColors {
-  max-width: 30px;
-  height: 30px;
-  border: none;
-  border-right: 1px solid black;
-
-}
-
-.playerProperty p {
-  padding-left: 5px;
-  font-size: 12px;
-}
-
-.playerProperty button {
-  height: 30px;
-  width: 40px;
-  border: none;
-  cursor: pointer;
-  border-left: 1px solid black;
-}
-
-.playerProperty button:hover {
-  background-color: lightgreen;
-}
-
-.playerProperty button:nth-child(3){
-  background-color: none;
-  position: absolute;
-  right: 40px;
-}
-
-.playerProperty button:last-child{
-  background-color: none;
-  position: absolute;
-  right: 0;
 }
 
 .monopoly-box .details{

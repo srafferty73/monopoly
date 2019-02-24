@@ -281,7 +281,7 @@ const data = {
     color: "",
     price: 200,
     houses: 0,
-    owner: "",
+    owner: "0",
     rent: [50,100,150,200],
     other_properties: [5,15,35],
     row: 3
@@ -391,7 +391,7 @@ const data = {
     color: "",
     price: 200,
     houses: 0,
-    owner: "",
+    owner: "1",
     rent: [50,100,150,200],
     other_properties: [5,15,25],
     row: 4
