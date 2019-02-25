@@ -16,6 +16,7 @@ class MonopolyBox extends Component {
     this.playerMove = this.playerMove.bind(this)
     this.endTurn = this.endTurn.bind(this);
     this.payRent = this.payRent.bind(this);
+    this.payTax = this.payTax.bind(this);
     this.buyProperty = this.buyProperty.bind(this);
   }
 
@@ -160,10 +161,26 @@ class MonopolyBox extends Component {
 
     this.setStateHelper("properties", this.state.players[this.state.game.current_player].current_position, "owner", newOwner);
     this.setStateHelper("players", this.state.game.current_player, "money", updatedMoney);
+
+    // const updated
   }
 
   payRent(){
+    const currentProperty = this.state.properties[this.state.players[this.state.game.current_player].current_position];
+    const theOwner = parseInt(currentProperty.owner);
+    const updatedOwner = this.state.players[theOwner].money + currentProperty.rent[currentProperty.houses];
+    const updatedPlayer = this.state.players[this.state.game.current_player].money - currentProperty.rent[currentProperty.houses];
+    this.setStateHelper("players", theOwner, "money", updatedOwner);
+    this.setStateHelper("players", this.state.game.current_player, "money", updatedPlayer);
     this.buttonToggleHelper('pay-rent', 'add');
+    this.buttonToggleHelper('end-turn', 'remove');
+  }
+
+  payTax(){
+    const currentProperty = this.state.properties[this.state.players[this.state.game.current_player].current_position];
+    const updatedPlayer = this.state.players[this.state.game.current_player].money - currentProperty.rent[currentProperty.houses];
+    this.setStateHelper("players", this.state.game.current_player, "money", updatedPlayer);
+    this.buttonToggleHelper('pay-tax', 'add');
     this.buttonToggleHelper('end-turn', 'remove');
   }
 
@@ -224,7 +241,11 @@ class MonopolyBox extends Component {
         <PlayerPropertyList player={this.state.players[0]} properties={player1Properties}/>
         <div className="monopoly-container">
           <CardDisplay propertyData={this.state.properties[this.state.players[this.state.game.current_player].current_position]}
-                       playerData={this.state.players[this.state.game.current_player]} payRent={this.payRent} buyProperty={this.buyProperty}/>
+                       playerData={this.state.players[this.state.game.current_player]}
+                       payRent={this.payRent}
+                       payTax={this.payTax}
+                       buyProperty={this.buyProperty}
+                       />
           <DiceRoll playerMove={this.playerMove} endTurn={this.endTurn}/>
           <DiceNumbers dice1={this.state.game.current_roll1} dice2={this.state.game.current_roll2}/>
           <MonopolyList properties={row1} players={this.state.players}/>
