@@ -192,7 +192,7 @@ code {
 }
 
 .card-display h2 {
-  height: 100px;
+  height: 80px;
   background-color: none;
   display: flex;
   align-items: center;
@@ -203,8 +203,28 @@ code {
 
 .card-display h3 {
   width: 100%;
-  margin: 0;
+  margin: 5px 0 15px 0;
+
   text-align: center;
+  background-color: none;
+}
+
+.rent-list {
+  background-color: none;
+  font-size: 12px;
+}
+
+.rent-list div {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 20px;
+  padding: 0;
+
+}
+
+.rent-list p {
+  background-color: none;
+  margin: 0;
 }
 
 .dice {
