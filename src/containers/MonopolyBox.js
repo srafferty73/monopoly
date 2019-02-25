@@ -9,11 +9,32 @@ import CardDisplay from '../components/CardDisplay';
 class MonopolyBox extends Component {
   constructor(props){
     super(props);
-    this.state = data
+    this.state = {
+      properties: [],
+      players: data.players,
+      game: data.game}
     this.playerMove = this.playerMove.bind(this)
     this.endTurn = this.endTurn.bind(this);
     this.payRent = this.payRent.bind(this);
   }
+
+  componentDidMount(){
+    const url = 'http://localhost:5000/api/properties'
+    const request = new XMLHttpRequest()
+    request.open ('GET', url)
+
+    request.addEventListener("load", ()=>{
+      if (request.status !== 200) return
+      const jsonString= request.responseText
+      const otherData = JSON.parse(jsonString)
+      console.log("label", otherData);
+      this.setState({properties:otherData})
+      console.log("check", this.state);
+    });
+   request.send()
+  };
+
+
 
   setStateHelper(stateName, arrayIndex, propertyName, newValue){
     const stateToUpdate = this.state[stateName];
@@ -157,6 +178,8 @@ class MonopolyBox extends Component {
 
   render(){
 
+   console.log("log", this.state);
+
     const player1Properties = this.state.properties.filter((property) => {
       return parseInt(property.owner) === 0;
     });
@@ -181,11 +204,19 @@ class MonopolyBox extends Component {
       return property.row === 4
     });
 
-    return(
+
+    console.log("Hi",this.state.properties);
+    console.log("Ello",this.state);
+    console.log("Hello",this.state.players);
+
+    const outputToRender = this.state.properties.length === 0 ? <p>Loading...</p> :
+(
+
       <div className="monopoly-box">
         <PlayerPropertyList player={this.state.players[0]} properties={player1Properties}/>
         <div className="monopoly-container">
-          <CardDisplay propertyData={this.state.properties[this.state.players[this.state.game.current_player].current_position]} playerData={this.state.players[this.state.game.current_player]} payRent={this.payRent}/>
+          <CardDisplay propertyData={this.state.properties[this.state.players[this.state.game.current_player].current_position]}
+                       playerData={this.state.players[this.state.game.current_player]} payRent={this.payRent}/>
           <DiceRoll playerMove={this.playerMove} endTurn={this.endTurn}/>
           <DiceNumbers dice1={this.state.game.current_roll1} dice2={this.state.game.current_roll2}/>
           <MonopolyList properties={row1} players={this.state.players}/>
@@ -195,6 +226,9 @@ class MonopolyBox extends Component {
         </div>
         <PlayerPropertyList player={this.state.players[1]} properties={player2Properties}/>
       </div>
+    )
+      return(
+        outputToRender
     )
   }
 }
