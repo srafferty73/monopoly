@@ -1,22 +1,33 @@
-import React, {Component} from 'react';
+import React from 'react';
 
 const Property = ({allData, player1, player2}) => {
 
-  if (allData.position === player1){
-  var checkPlayer1 = <div className='one'>1</div>
+  if (allData.color !== ""){
+    var colorBox = <div className={allData.color}></div>
+  }
+  else {
+    var noColorBox = <div className="no-color"></div>
   }
 
-  if (allData.position === player2){
-  var checkPlayer2 = <div className='two'>2</div>
+  if (allData.position === player1.current_position){
+  var checkPlayer1 = <div className='one'><i class={player1.icon}></i></div>
+  }
+
+  if (allData.position === player2.current_position){
+  var checkPlayer2 = <div className='two'><i class={player2.icon}></i></div>
   }
 
   return(
     <div className="property">
+      {colorBox}
+      {noColorBox}
       <div className='propertyName'>
       {allData.name}
       </div>
-    {checkPlayer1}
-    {checkPlayer2}
+      <div className='player-tokens'>
+        {checkPlayer1}
+        {checkPlayer2}
+      </div>
     </div>
   )
 

@@ -3,10 +3,10 @@ const data = {
   {
     position: 0,
     name: "GO",
-    color: null,
-    price: null,
-    houses: null,
-    owner: null,
+    color: "",
+    price: 0,
+    houses: 0,
+    owner: "Admin",
     rent: [],
     other_properties: [],
     row: 1
@@ -25,10 +25,10 @@ const data = {
   {
     position: 2,
     name: "Community Chest",
-    color: null,
+    color: "",
     price: 0,
     houses: 0,
-    owner: "",
+    owner: "Admin",
     rent: [],
     other_properties: [],
     row: 1
@@ -39,7 +39,7 @@ const data = {
     color: "Brown",
     price: 60,
     houses: 0,
-    owner: "",
+    owner: "1",
     rent: [],
     other_properties: [1],
     row: 1
@@ -50,7 +50,7 @@ const data = {
     color: "",
     price: 0,
     houses: 0,
-    owner: "",
+    owner: "Admin",
     rent: [200],
     other_properties: [],
     row: 1
@@ -61,7 +61,7 @@ const data = {
     color: "",
     price: 200,
     houses: 0,
-    owner: "",
+    owner: "0",
     rent: [50,100,150,200],
     other_properties: [15,25,35],
     row: 1
@@ -69,10 +69,10 @@ const data = {
   {
     position: 6,
     name: "The Angel Islington",
-    color: "Light Blue",
+    color: "LightBlue",
     price: 100,
     houses: 0,
-    owner: "",
+    owner: "0",
     rent: [],
     other_properties: [8,9],
     row: 1
@@ -83,7 +83,7 @@ const data = {
     color: "",
     price: 0,
     houses: 0,
-    owner: "",
+    owner: "Admin",
     rent: [],
     other_properties: [],
     row: 1
@@ -91,10 +91,10 @@ const data = {
   {
     position: 8,
     name: "Euston Road",
-    color: "Light Blue",
+    color: "LightBlue",
     price: 100,
     houses: 0,
-    owner: "",
+    owner: "1",
     rent: [],
     other_properties: [6,9],
     row: 1
@@ -102,7 +102,7 @@ const data = {
   {
     position: 9,
     name: "Pentonville Road",
-    color: "Light Blue",
+    color: "LightBlue",
     price: 120,
     houses: 0,
     owner: "",
@@ -116,7 +116,7 @@ const data = {
     color: "",
     price: 0,
     houses: 0,
-    owner: "",
+    owner: "Admin",
     rent: [],
     other_properties: [],
     row: 2
@@ -193,7 +193,7 @@ const data = {
     color: "",
     price: 0,
     houses: 0,
-    owner: "",
+    owner: "Admin",
     rent: [],
     other_properties: [],
     row: 2
@@ -226,7 +226,7 @@ const data = {
     color: "",
     price: 0,
     houses: 0,
-    owner: "",
+    owner: "Admin",
     rent: [],
     other_properties: [],
     row: 3
@@ -237,7 +237,7 @@ const data = {
     color: "Red",
     price: 220,
     houses: 0,
-    owner: "",
+    owner: "0",
     rent: [],
     other_properties: [23,24],
     row: 3
@@ -248,7 +248,7 @@ const data = {
     color: "",
     price: 0,
     houses: 0,
-    owner: "",
+    owner: "Admin",
     rent: [],
     other_properties: [],
     row: 3
@@ -281,7 +281,7 @@ const data = {
     color: "",
     price: 200,
     houses: 0,
-    owner: "",
+    owner: "0",
     rent: [50,100,150,200],
     other_properties: [5,15,35],
     row: 3
@@ -336,7 +336,7 @@ const data = {
     color: "",
     price: 0,
     houses: 0,
-    owner: "",
+    owner: "Admin",
     rent: [],
     other_properties: [],
     row: 4
@@ -369,7 +369,7 @@ const data = {
     color: "",
     price: 0,
     houses: 0,
-    owner: "",
+    owner: "Admin",
     rent: [],
     other_properties: [],
     row: 4
@@ -391,7 +391,7 @@ const data = {
     color: "",
     price: 200,
     houses: 0,
-    owner: "",
+    owner: "1",
     rent: [50,100,150,200],
     other_properties: [5,15,25],
     row: 4
@@ -402,7 +402,7 @@ const data = {
     color: "",
     price: 0,
     houses: 0,
-    owner: "",
+    owner: "Admin",
     rent: [],
     other_properties: [],
     row: 4
@@ -410,7 +410,7 @@ const data = {
   {
     position: 37,
     name: "Park Lane",
-    color: "Dark Blue",
+    color: "DarkBlue",
     price: 350,
     houses: 0,
     owner: "",
@@ -424,7 +424,7 @@ const data = {
     color: "",
     price: 0,
     houses: 0,
-    owner: "",
+    owner: "Admin",
     rent: [100],
     other_properties: [],
     row: 4
@@ -432,7 +432,7 @@ const data = {
   {
     position: 39,
     name: "Mayfair",
-    color: "Dark Blue",
+    color: "DarkBlue",
     price: 400,
     houses: 0,
     owner: "",
@@ -443,16 +443,20 @@ const data = {
 ],
 players: [
   {
-    id: 1,
-    name: "",
+    id: 0,
+    name: "John",
     money: 1500,
-    current_position: 0
+    current_position: 0,
+    status: "end",
+    icon:"fas fa-dog"
   },
   {
-    id: 2,
-    name: "",
+    id: 1,
+    name: "Bill",
     money: 1500,
-    current_position: 0
+    current_position: 0,
+    status: "end",
+    icon: "fas fa-car-side"
   }
 ],
 game: {
