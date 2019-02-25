@@ -16,6 +16,7 @@ class MonopolyBox extends Component {
     this.playerMove = this.playerMove.bind(this)
     this.endTurn = this.endTurn.bind(this);
     this.payRent = this.payRent.bind(this);
+    this.buyProperty = this.buyProperty.bind(this);
   }
 
   componentDidMount(){
@@ -33,8 +34,6 @@ class MonopolyBox extends Component {
     });
    request.send()
   };
-
-
 
   setStateHelper(stateName, arrayIndex, propertyName, newValue){
     const stateToUpdate = this.state[stateName];
@@ -154,6 +153,15 @@ class MonopolyBox extends Component {
     this.setStateHelper("game", "ignore", "current_player", newPlayer);
   }
 
+  buyProperty(){
+    let newOwner = this.state.game.current_player.toString();
+    let propertyPrice = this.state.properties[this.state.players[this.state.game.current_player].current_position].price
+    let updatedMoney = this.state.players[this.state.game.current_player].money - propertyPrice;
+
+    this.setStateHelper("properties", this.state.players[this.state.game.current_player].current_position, "owner", newOwner);
+    this.setStateHelper("players", this.state.game.current_player, "money", updatedMoney);
+  }
+
   payRent(){
     this.buttonToggleHelper('pay-rent', 'add');
     this.buttonToggleHelper('end-turn', 'remove');
@@ -216,7 +224,7 @@ class MonopolyBox extends Component {
         <PlayerPropertyList player={this.state.players[0]} properties={player1Properties}/>
         <div className="monopoly-container">
           <CardDisplay propertyData={this.state.properties[this.state.players[this.state.game.current_player].current_position]}
-                       playerData={this.state.players[this.state.game.current_player]} payRent={this.payRent}/>
+                       playerData={this.state.players[this.state.game.current_player]} payRent={this.payRent} buyProperty={this.buyProperty}/>
           <DiceRoll playerMove={this.playerMove} endTurn={this.endTurn}/>
           <DiceNumbers dice1={this.state.game.current_roll1} dice2={this.state.game.current_roll2}/>
           <MonopolyList properties={row1} players={this.state.players}/>
