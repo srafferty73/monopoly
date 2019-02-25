@@ -2,41 +2,41 @@ import React from 'react';
 
 const DiceNumbers = ({dice1, dice2}) => {
   if (dice1 === 1){
-    var firstDice = <img src="dice_1.png"/>
+    var firstDice = <img src="dice_1.png" alt="First dice rolled one"/>
   }
   else if (dice1 === 2){
-    var firstDice = <img src="dice_2.png"/>
+    firstDice = <img src="dice_2.png" alt="First dice rolled two"/>
   }
   else if (dice1 === 3){
-    var firstDice = <img src="dice_3.png"/>
+    firstDice = <img src="dice_3.png" alt="First dice rolled three"/>
   }
   else if (dice1 === 4){
-    var firstDice = <img src="dice_4.png"/>
+    firstDice = <img src="dice_4.png" alt="First dice rolled four"/>
   }
   else if (dice1 === 5){
-    var firstDice = <img src="dice_5.png"/>
+    firstDice = <img src="dice_5.png" alt="First dice rolled five"/>
   }
   else if (dice1 === 6){
-    var firstDice = <img src="dice_6.png"/>
+    firstDice = <img src="dice_6.png" alt="First dice rolled six"/>
   }
 
   if (dice2 === 1){
-    var secondDice = <img src="dice_1.png"/>
+    var secondDice = <img src="dice_1.png" alt="Second dice rolled one"/>
   }
   else if (dice2 === 2){
-    var secondDice = <img src="dice_2.png"/>
+    secondDice = <img src="dice_2.png" alt="Second dice rolled two"/>
   }
   else if (dice2 === 3){
-    var secondDice = <img src="dice_3.png"/>
+    secondDice = <img src="dice_3.png" alt="Second dice rolled three"/>
   }
   else if (dice2 === 4){
-    var secondDice = <img src="dice_4.png"/>
+    secondDice = <img src="dice_4.png" alt="Second dice rolled four"/>
   }
   else if (dice2 === 5){
-    var secondDice = <img src="dice_5.png"/>
+    secondDice = <img src="dice_5.png" alt="Second dice rolled five"/>
   }
   else if (dice2 === 6){
-    var secondDice = <img src="dice_6.png"/>
+    secondDice = <img src="dice_6.png" alt="Second dice rolled six"/>
   }
 
   return(

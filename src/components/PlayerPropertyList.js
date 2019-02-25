@@ -13,7 +13,7 @@ return(
       <i className={player.icon}/>
       <h2>{player.name}</h2>
         <div className="player-money">
-          <img className="pound-sterling" src="pound-sterling.png"></img>
+          <img className="pound-sterling" src="pound-sterling.png" alt="pound sterling sign"></img>
           <h3>{player.money}</h3>
         </div>
     </div>
