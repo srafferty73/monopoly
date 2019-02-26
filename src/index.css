@@ -598,3 +598,7 @@ code {
   color: red;
   text-shadow: 0 0 2px black;
 }
+
+.green-rent {
+  color: green;
+}

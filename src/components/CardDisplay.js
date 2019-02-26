@@ -87,7 +87,12 @@ const CardDisplay = ({propertyData, playerData, payRent, payTax, payBail, buyPro
         detail = `House ${index-1}`
       }
     }
-    return <div><p>{detail}</p><p>£{item}</p></div>
+    if (index === propertyData.rent_status){
+      return <div className="green-rent"><p>{detail}</p><p>£{item}</p></div>
+    }
+    else {
+      return <div><p>{detail}</p><p>£{item}</p></div>
+    }
   })
 
 
