@@ -526,7 +526,7 @@ code {
 .player-indicator i {
   font-size: 50px;
   background-color: none;
-  z-index: 100;
+  z-index: 8;
   color: rgba(0,255,100,1);
   text-shadow: 0 0 2px black;
 }
@@ -534,4 +534,29 @@ code {
 .chanceDescription {
   background-color: none;
   text-align: center;
+}
+
+.winner {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.winner-name {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 11;
+  font-size: 50px;
+  font-weight: 700;
 }
