@@ -19,6 +19,7 @@ class MonopolyBox extends Component {
     this.payTax = this.payTax.bind(this);
     this.buyProperty = this.buyProperty.bind(this);
     this.sellProperty = this.sellProperty.bind(this);
+    this.buyHouses = this.buyHouses.bind(this);
   }
 
   componentDidMount(){
@@ -187,6 +188,21 @@ class MonopolyBox extends Component {
     }
   }
 
+  buyHouses(index){
+    const currentProperty = this.state.properties[index];
+    const updatedRentStatus = currentProperty.rent_status + 1;
+    this.setStateHelper("properties", index, "rent_status", updatedRentStatus);
+
+    const housePrice = currentProperty.row * 50;
+    const houseOwner = parseInt(currentProperty.owner);
+    const ownerMoney = this.state.players[houseOwner].money
+    const updatedMoney = ownerMoney - housePrice;
+    this.setStateHelper("players", houseOwner, "money", updatedMoney);
+
+    console.log(housePrice);
+    console.log(houseOwner);
+  }
+
   sellProperty(index){
     const currentProperty = this.state.properties[index];
     const indexOwner = parseInt(this.state.properties[index].owner);
@@ -267,7 +283,7 @@ class MonopolyBox extends Component {
 (
 
       <div className="monopoly-box">
-        <PlayerPropertyList player={this.state.players[0]} properties={player1Properties} sellProperty={this.sellProperty}/>
+        <PlayerPropertyList player={this.state.players[0]} properties={player1Properties} buyHouses={this.buyHouses} sellProperty={this.sellProperty}/>
         <div className="monopoly-container">
           <CardDisplay propertyData={this.state.properties[this.state.players[this.state.game.current_player].current_position]}
                        playerData={this.state.players[this.state.game.current_player]}
@@ -282,7 +298,7 @@ class MonopolyBox extends Component {
           <MonopolyList properties={row3} players={this.state.players}/>
           <MonopolyList properties={row4} players={this.state.players}/>
         </div>
-        <PlayerPropertyList player={this.state.players[1]} properties={player2Properties} sellProperty={this.sellProperty}/>
+        <PlayerPropertyList player={this.state.players[1]} properties={player2Properties} buyHouses={this.buyHouses} sellProperty={this.sellProperty}/>
       </div>
     )
       return(
