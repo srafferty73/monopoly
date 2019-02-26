@@ -104,7 +104,13 @@ class MonopolyBox extends Component {
     if (this.state.game.current_roll1 === this.state.game.current_roll2){
       updatedDoubles = this.state.game.double_counter + 1;
       console.log("Double x",updatedDoubles);
-      this.buttonToggleHelper('dice-roll', 'remove');
+      if (this.state.properties[this.state.players[this.state.game.current_player].current_position].owner ==="Government"){
+
+      }
+      else {
+        this.buttonToggleHelper('dice-roll', 'remove');
+      }
+
     }
     else {
       updatedDoubles = 0
@@ -232,6 +238,9 @@ class MonopolyBox extends Component {
 
     if (this.state.game.current_roll1 !== this.state.game.current_roll2){
       this.buttonToggleHelper('end-turn', 'remove');
+    }
+    else {
+      this.buttonToggleHelper('dice-roll', 'remove');
     }
   }
 
