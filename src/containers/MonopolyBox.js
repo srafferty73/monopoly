@@ -116,8 +116,8 @@ class MonopolyBox extends Component {
     this.buttonToggleHelper('dice-roll', 'add');
     const dice1 = Math.floor(Math.random() * (6) +1);
     const dice2 = Math.floor(Math.random() * (6) +1);
-    this.setStateHelper("game", "ignore", "current_roll1", 4);
-    this.setStateHelper("game", "ignore", "current_roll2", 3);
+    this.setStateHelper("game", "ignore", "current_roll1", dice1);
+    this.setStateHelper("game", "ignore", "current_roll2", dice2);
   }
 
   findNewPosition(){
