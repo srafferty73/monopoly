@@ -10,11 +10,21 @@ const Property = ({allData, player1, player2}) => {
   }
 
   if (allData.position === player1.current_position){
-  var checkPlayer1 = <div className='one'><i className={player1.icon}></i></div>
+    if (player1.jail_counter > 0){
+      var checkPlayer1 = <div className='one in-jail'><i className={player1.icon}></i></div>
+    }
+    else {
+      checkPlayer1 = <div className='one'><i className={player1.icon}></i></div>
+    }
   }
 
   if (allData.position === player2.current_position){
-  var checkPlayer2 = <div className='two'><i className={player2.icon}></i></div>
+    if (player2.jail_counter > 0){
+      var checkPlayer2 = <div className='two in-jail'><i className={player2.icon}></i></div>
+    }
+    else {
+      var checkPlayer2 = <div className='two'><i className={player2.icon}></i></div>
+    }
   }
 
   return(
