@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Rules = () => {
   return (
-    <div>
+    <div className="rules">
     <ol>
       <li>
         Rule 1

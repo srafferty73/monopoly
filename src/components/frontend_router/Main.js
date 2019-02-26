@@ -20,9 +20,8 @@ render() {
         <Route path="/rules" component={Rules} />
       </React.Fragment>
     </Router>
-      );
-
-}
+    );
+  }
 }
 
 export default Main;

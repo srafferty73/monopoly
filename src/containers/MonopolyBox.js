@@ -5,6 +5,7 @@ import DiceRoll from '../components/DiceRoll';
 import DiceNumbers from '../components/DiceNumbers';
 import PlayerPropertyList from '../components/PlayerPropertyList';
 import CardDisplay from '../components/CardDisplay';
+import Winner from '../components/Winner';
 
 class MonopolyBox extends Component {
   constructor(props){
@@ -70,6 +71,11 @@ class MonopolyBox extends Component {
     else {
       this.setStateHelper("players", this.state.game.current_player, "jail_counter", 0)
     }
+  }
+
+  getChanceNumber(){
+    const randomNumber = Math.floor(Math.random() * (13) +1);
+    this.setStateHelper("game", "ignore", "chance_num", randomNumber);
   }
 
   diceRoll(){
@@ -186,8 +192,23 @@ class MonopolyBox extends Component {
 
   checkSwitch(){
     if (this.state.game.double_counter === 0){
+      this.checkWinCondition();
       this.switchPlayer();
     }
+  }
+
+  checkWinCondition(){
+    let winner = null;
+    if (this.state.players[this.state.game.current_player].money < 0){
+      if (this.state.game.current_player === 0){
+         winner = this.state.players[1].name;
+      }
+      else {
+        winner = this.state.players[0].name;
+      }
+    }
+    console.log('Winner:', winner);
+    this.setStateHelper("game", "ignore", "winner", winner);
   }
 
   switchPlayer(){
@@ -299,6 +320,7 @@ class MonopolyBox extends Component {
   playerMove(){
     this.setPlayerStatus("start");
     this.updateJailCounter();
+    this.getChanceNumber();
     this.diceRoll();
     this.findNewPosition();
     this.passGo();
@@ -310,12 +332,15 @@ class MonopolyBox extends Component {
   endTurn(){
     this.setPlayerStatus("end");
     this.checkSwitch();
+    this.setPlayerStatus("start");
     this.buttonToggleHelper('end-turn', 'add');
     this.buttonToggleHelper('dice-roll', 'remove');
     // this.buttonToggleHelper('pay-bail', 'remove');
   }
 
   render(){
+
+
 
     const player1Properties = this.state.properties.filter((property) => {
       return parseInt(property.owner) === 0;
@@ -355,6 +380,10 @@ class MonopolyBox extends Component {
                        payBail={this.payBail}
                        buyProperty={this.buyProperty}
                        chanceCards={this.state.chance}
+                       chanceNum={this.state.game.chance_num}
+                       currentPlayer={this.state.players[this.state.game.current_player]}
+                       dice1={this.state.game.current_roll1}
+                       dice2={this.state.game.current_roll2}
                        />
           <DiceRoll playerMove={this.playerMove} endTurn={this.endTurn}/>
           <DiceNumbers dice1={this.state.game.current_roll1} dice2={this.state.game.current_roll2}/>
@@ -364,6 +393,7 @@ class MonopolyBox extends Component {
           <MonopolyList properties={row4} players={this.state.players}/>
         </div>
         <PlayerPropertyList player={this.state.players[1]} properties={player2Properties} buyHouses={this.buyHouses} sellProperty={this.sellProperty} currentPlayer={this.state.game.current_player}/>
+        <Winner winner={this.state.game.winner}/>
       </div>
     )
       return(

@@ -24,7 +24,9 @@ game: {
   current_player: 0,
   current_roll1: null,
   current_roll2: null,
-  double_counter: 0
+  double_counter: 0,
+  winner: null,
+  chance_num: 0
 },
 chance: [
   {
