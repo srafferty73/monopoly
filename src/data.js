@@ -32,14 +32,14 @@ chance: [
   {
     id: 0,
     description: "Advance to Mayfair",
-    move_to: 39,
+    move_to: "39",
     pay: 0,
     collect: 0
   },
   {
     id: 1,
     description: "Advance to GO",
-    move_to: 0,
+    move_to: "0",
     pay: 0,
     collect: 200
   },
@@ -53,14 +53,14 @@ chance: [
   {
     id: 3,
     description: "Go to Jail",
-    move_to: 10,
+    move_to: "10",
     pay: 0,
     collect: 0
   },
   {
     id: 4,
     description: "Go Back 3 Spaces",
-    move_to: -3,
+    move_to: "-3",
     pay: 0,
     collect: 0
   },
@@ -95,21 +95,21 @@ chance: [
   {
     id: 9,
     description: "Advance to Trafalgar Square",
-    move_to: 24,
+    move_to: "24",
     pay: 0,
     collect: 0
   },
   {
     id: 10,
     description: "Trip to Marylebone Station",
-    move_to: 15,
+    move_to: "15",
     pay: 0,
     collect: 0
   },
   {
     id: 11,
     description: "Advance to Pall Mall",
-    move_to: 11,
+    move_to: "11",
     pay: 0,
     collect: 0
   },

@@ -24,6 +24,7 @@ class MonopolyBox extends Component {
     this.buyProperty = this.buyProperty.bind(this);
     this.sellProperty = this.sellProperty.bind(this);
     this.buyHouses = this.buyHouses.bind(this);
+    this.chanceCard = this.chanceCard.bind(this);
   }
 
   componentDidMount(){
@@ -78,12 +79,41 @@ class MonopolyBox extends Component {
     this.setStateHelper("game", "ignore", "chance_num", randomNumber);
   }
 
+  chanceCard(){
+    const currentCard = this.state.chance[this.state.game.chance_num-1];
+    if (currentCard.move_to !== ""){
+      if (currentCard.move_to === "-3"){
+        const updatedPosition = this.state.players[this.state.game.current_player].current_position - 3;
+        this.setStateHelper("players", this.state.game.current_player, "current_position", updatedPosition);
+      }
+      else {
+        const updatedPosition = parseInt(currentCard.move_to);
+        this.setStateHelper("players", this.state.game.current_player, "current_position", updatedPosition);
+
+        if ((updatedPosition < this.state.players[this.state.game.current_player].current_position) && (updatedPosition !== 10)){
+          const updatedFunds = this.state.players[this.state.game.current_player].money + 200;
+          this.setStateHelper("players", this.state.game.current_player, "money", updatedFunds);
+        }
+      }
+    }
+    if (currentCard.pay !== 0){
+      const payMoney = this.state.players[this.state.game.current_player].money - currentCard.pay;
+      this.setStateHelper("players", this.state.game.current_player, "money", payMoney);
+    }
+    if (currentCard.collect !== 0){
+      const collectMoney = this.state.players[this.state.game.current_player].money + currentCard.collect;
+      this.setStateHelper("players", this.state.game.current_player, "money", collectMoney);
+    }
+    this.setStateHelper("players", this.state.game.current_player, "status", "end");
+    this.endTurn();
+  }
+
   diceRoll(){
     this.buttonToggleHelper('dice-roll', 'add');
     const dice1 = Math.floor(Math.random() * (6) +1);
     const dice2 = Math.floor(Math.random() * (6) +1);
-    this.setStateHelper("game", "ignore", "current_roll1", dice1);
-    this.setStateHelper("game", "ignore", "current_roll2", dice2);
+    this.setStateHelper("game", "ignore", "current_roll1", 4);
+    this.setStateHelper("game", "ignore", "current_roll2", 3);
   }
 
   findNewPosition(){
@@ -103,6 +133,7 @@ class MonopolyBox extends Component {
       const total = this.state.game.current_roll1 + this.state.game.current_roll2;
       const newPosition = this.state.players[this.state.game.current_player].current_position + total;
       this.setStateHelper("players", this.state.game.current_player, "current_position", newPosition);
+      this.setStateHelper("players", this.state.game.current_player, "jail_counter", 0);
     }
   // If failed to roll a double 3 times:
     else if (this.state.players[this.state.game.current_player].jail_counter === 4){
@@ -111,6 +142,7 @@ class MonopolyBox extends Component {
       const newPosition = this.state.players[this.state.game.current_player].current_position + total;
       this.setStateHelper("players", this.state.game.current_player, "money", updatedMoney);
       this.setStateHelper("players", this.state.game.current_player, "current_position", newPosition);
+      this.setStateHelper("players", this.state.game.current_player, "jail_counter", 0);
     }
 }
 
@@ -332,7 +364,7 @@ class MonopolyBox extends Component {
   endTurn(){
     this.setPlayerStatus("end");
     this.checkSwitch();
-    this.setPlayerStatus("start");
+    this.setPlayerStatus("begin");
     this.buttonToggleHelper('end-turn', 'add');
     this.buttonToggleHelper('dice-roll', 'remove');
     // this.buttonToggleHelper('pay-bail', 'remove');
@@ -384,6 +416,7 @@ class MonopolyBox extends Component {
                        currentPlayer={this.state.players[this.state.game.current_player]}
                        dice1={this.state.game.current_roll1}
                        dice2={this.state.game.current_roll2}
+                       chanceCard={this.chanceCard}
                        />
           <DiceRoll playerMove={this.playerMove} endTurn={this.endTurn}/>
           <DiceNumbers dice1={this.state.game.current_roll1} dice2={this.state.game.current_roll2}/>
