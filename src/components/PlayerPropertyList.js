@@ -1,14 +1,19 @@
 import React from 'react';
 import PlayerProperty from './PlayerProperty';
 
-const PlayerPropertyList = ({player, properties, buyHouses, sellProperty}) => {
+const PlayerPropertyList = ({player, properties, buyHouses, sellProperty, currentPlayer}) => {
   var playerPropertyNodes = properties.map((property, index) => {
     return(
       <PlayerProperty propertyData={property} buyHouses={buyHouses} sellProperty={sellProperty}/>
     )
   })
+
+  if (currentPlayer === player.id){
+    var currentPlayerIndicator = <div className="player-indicator"><i class="fas fa-star"></i></div>
+  }
 return(
   <div className="playerProperties">
+    {currentPlayerIndicator}
     <div className="player-name-icon">
       <i className={player.icon}/>
       <h2>{player.name}</h2>

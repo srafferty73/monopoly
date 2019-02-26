@@ -24,7 +24,7 @@ const CardDisplay = ({propertyData, playerData, payRent, payTax, buyProperty}) =
     }
   }
 
-  if (propertyData.owner === "Government"){
+  if ((propertyData.owner === "Government") && (playerData.status === "start")){
     var payTaxButton = <button id="pay-tax" className="card-display-pay" onClick={payTax}>Pay Tax</button>
   }
 

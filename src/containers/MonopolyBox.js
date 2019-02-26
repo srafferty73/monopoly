@@ -104,7 +104,13 @@ class MonopolyBox extends Component {
     if (this.state.game.current_roll1 === this.state.game.current_roll2){
       updatedDoubles = this.state.game.double_counter + 1;
       console.log("Double x",updatedDoubles);
-      this.buttonToggleHelper('dice-roll', 'remove');
+      if (this.state.properties[this.state.players[this.state.game.current_player].current_position].owner ==="Government"){
+
+      }
+      else {
+        this.buttonToggleHelper('dice-roll', 'remove');
+      }
+
     }
     else {
       updatedDoubles = 0
@@ -233,6 +239,9 @@ class MonopolyBox extends Component {
     if (this.state.game.current_roll1 !== this.state.game.current_roll2){
       this.buttonToggleHelper('end-turn', 'remove');
     }
+    else {
+      this.buttonToggleHelper('dice-roll', 'remove');
+    }
   }
 
   playerMove(){
@@ -283,7 +292,7 @@ class MonopolyBox extends Component {
 (
 
       <div className="monopoly-box">
-        <PlayerPropertyList player={this.state.players[0]} properties={player1Properties} buyHouses={this.buyHouses} sellProperty={this.sellProperty}/>
+        <PlayerPropertyList player={this.state.players[0]} properties={player1Properties} buyHouses={this.buyHouses} sellProperty={this.sellProperty} currentPlayer={this.state.game.current_player}/>
         <div className="monopoly-container">
           <CardDisplay propertyData={this.state.properties[this.state.players[this.state.game.current_player].current_position]}
                        playerData={this.state.players[this.state.game.current_player]}
@@ -298,7 +307,7 @@ class MonopolyBox extends Component {
           <MonopolyList properties={row3} players={this.state.players}/>
           <MonopolyList properties={row4} players={this.state.players}/>
         </div>
-        <PlayerPropertyList player={this.state.players[1]} properties={player2Properties} buyHouses={this.buyHouses} sellProperty={this.sellProperty}/>
+        <PlayerPropertyList player={this.state.players[1]} properties={player2Properties} buyHouses={this.buyHouses} sellProperty={this.sellProperty} currentPlayer={this.state.game.current_player}/>
       </div>
     )
       return(

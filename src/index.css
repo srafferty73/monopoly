@@ -499,3 +499,24 @@ code {
   color: grey;
   background-color: #fbd7d7;
 }
+
+.in-jail {
+  color: red;
+}
+
+.player-indicator {
+  position: absolute;
+  background-color: none;
+  width: 300px;
+  display: flex;
+  justify-content: center;
+  top: 12px;
+}
+
+.player-indicator i {
+  font-size: 30px;
+  background-color: none;
+  z-index: 100;
+  color: gold;
+  text-shadow: 0 0 5px black;
+}
