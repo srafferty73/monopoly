@@ -2,7 +2,7 @@ import React from 'react';
 
 const PlayerProperty = ({propertyData, buyHouses, sellProperty}) => {
 
-  if (propertyData.rent_status >= 1) {
+  if ((propertyData.rent_status >= 1) && (propertyData.rent_status < 6)){
     var buyHousesButton = <button onClick={() => buyHouses(propertyData.position)}>Buy Houses</button>
   }
 
