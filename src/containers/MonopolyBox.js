@@ -12,11 +12,14 @@ class MonopolyBox extends Component {
     this.state = {
       properties: [],
       players: data.players,
-      game: data.game}
+      game: data.game,
+      chance: data.chance
+    }
     this.playerMove = this.playerMove.bind(this)
     this.endTurn = this.endTurn.bind(this);
     this.payRent = this.payRent.bind(this);
     this.payTax = this.payTax.bind(this);
+    this.payBail = this.payBail.bind(this);
     this.buyProperty = this.buyProperty.bind(this);
     this.sellProperty = this.sellProperty.bind(this);
     this.buyHouses = this.buyHouses.bind(this);
@@ -58,6 +61,17 @@ class MonopolyBox extends Component {
     }
   }
 
+  updateJailCounter(){
+    if ((this.state.players[this.state.game.current_player].current_position === 10) && (this.state.players[this.state.game.current_player].jail_counter > 0)){
+      const updatedJailCounter = this.state.players[this.state.game.current_player].jail_counter + 1
+      this.setStateHelper("players", this.state.game.current_player, "jail_counter", updatedJailCounter)
+      console.log('hello', this.state.players[this.state.game.current_player]);
+    }
+    else {
+      this.setStateHelper("players", this.state.game.current_player, "jail_counter", 0)
+    }
+  }
+
   diceRoll(){
     this.buttonToggleHelper('dice-roll', 'add');
     const dice1 = Math.floor(Math.random() * (6) +1);
@@ -67,10 +81,32 @@ class MonopolyBox extends Component {
   }
 
   findNewPosition(){
-    const total = this.state.game.current_roll1 + this.state.game.current_roll2;
-    const newPosition = this.state.players[this.state.game.current_player].current_position + total;
-    this.setStateHelper("players", this.state.game.current_player, "current_position", newPosition);
+    if (this.state.players[this.state.game.current_player].jail_counter === 0){
+      const total = this.state.game.current_roll1 + this.state.game.current_roll2;
+      const newPosition = this.state.players[this.state.game.current_player].current_position + total;
+      this.setStateHelper("players", this.state.game.current_player, "current_position", newPosition);
+      }
+    else {
+      this.findNewPositionFromJail();
+    }
   }
+
+  findNewPositionFromJail(){
+  // If double:
+    if (this.state.game.current_roll1 === this.state.game.current_roll2){
+      const total = this.state.game.current_roll1 + this.state.game.current_roll2;
+      const newPosition = this.state.players[this.state.game.current_player].current_position + total;
+      this.setStateHelper("players", this.state.game.current_player, "current_position", newPosition);
+    }
+  // If failed to roll a double 3 times:
+    else if (this.state.players[this.state.game.current_player].jail_counter === 4){
+      const updatedMoney = this.state.players[this.state.game.current_player].money - 50;
+      const total = this.state.game.current_roll1 + this.state.game.current_roll2;
+      const newPosition = this.state.players[this.state.game.current_player].current_position + total;
+      this.setStateHelper("players", this.state.game.current_player, "money", updatedMoney);
+      this.setStateHelper("players", this.state.game.current_player, "current_position", newPosition);
+    }
+}
 
   passGo(){
     if (this.state.players[this.state.game.current_player].current_position > 39){
@@ -86,6 +122,7 @@ class MonopolyBox extends Component {
     if (this.state.players[this.state.game.current_player].current_position === 30){
       const newPosition = 10;
       this.setStateHelper("players", this.state.game.current_player, "current_position", newPosition);
+      this.setStateHelper("players", this.state.game.current_player, "jail_counter", 1)
     }
 
     // Roll 3 doubles in a row:
@@ -94,6 +131,7 @@ class MonopolyBox extends Component {
       const newCounter = 0;
       this.setStateHelper("players", this.state.game.current_player, "current_position", newPosition);
       this.setStateHelper("game", "ignore", "double_counter", newCounter);
+      this.setStateHelper("players", this.state.game.current_player, "jail_counter", 1)
       console.log("Sent to Jail!");
       this.endTurn();
     }
@@ -226,7 +264,9 @@ class MonopolyBox extends Component {
     this.setStateHelper("players", theOwner, "money", updatedOwner);
     this.setStateHelper("players", this.state.game.current_player, "money", updatedPlayer);
     this.buttonToggleHelper('pay-rent', 'add');
-    this.buttonToggleHelper('end-turn', 'remove');
+    if (this.state.game.current_roll1 !== this.state.game.current_roll2){
+      this.buttonToggleHelper('end-turn', 'remove');
+    }
   }
 
   payTax(){
@@ -244,8 +284,17 @@ class MonopolyBox extends Component {
     }
   }
 
+  payBail(){
+    const updatedPlayer = this.state.players[this.state.game.current_player].money - 50;
+    this.setStateHelper("players", this.state.game.current_player, "money", updatedPlayer);
+    this.buttonToggleHelper('pay-bail', 'add');
+    // this.buttonToggleHelper('dice-roll', 'add');
+    this.buttonToggleHelper('end-turn', 'remove');
+  }
+
   playerMove(){
     this.setPlayerStatus("start");
+    this.updateJailCounter();
     this.diceRoll();
     this.findNewPosition();
     this.passGo();
@@ -298,7 +347,9 @@ class MonopolyBox extends Component {
                        playerData={this.state.players[this.state.game.current_player]}
                        payRent={this.payRent}
                        payTax={this.payTax}
+                       payBail={this.payBail}
                        buyProperty={this.buyProperty}
+                       chanceCards={this.state.chance}
                        />
           <DiceRoll playerMove={this.playerMove} endTurn={this.endTurn}/>
           <DiceNumbers dice1={this.state.game.current_roll1} dice2={this.state.game.current_roll2}/>

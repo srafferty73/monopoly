@@ -9,7 +9,7 @@ const PlayerPropertyList = ({player, properties, buyHouses, sellProperty, curren
   })
 
   if (currentPlayer === player.id){
-    var currentPlayerIndicator = <div className="player-indicator"><i class="fas fa-star"></i></div>
+    var currentPlayerIndicator = <div className="player-indicator"><i class="fas fa-angle-down"></i></div>
   }
 return(
   <div className="playerProperties">

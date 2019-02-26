@@ -28,6 +28,16 @@ code {
   background: linear-gradient(to right, #FF8235, #30E8BF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
+.splash-screen {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: blue;
+  background: linear-gradient(to right, #FF8235, #30E8BF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
 .playerProperties {
   background-color: none;
   width: 300px;
@@ -510,13 +520,18 @@ code {
   width: 300px;
   display: flex;
   justify-content: center;
-  top: 12px;
+  top: 0px;
 }
 
 .player-indicator i {
-  font-size: 30px;
+  font-size: 50px;
   background-color: none;
   z-index: 100;
-  color: gold;
-  text-shadow: 0 0 5px black;
+  color: rgba(0,255,100,1);
+  text-shadow: 0 0 2px black;
+}
+
+.chanceDescription {
+  background-color: none;
+  text-align: center;
 }
