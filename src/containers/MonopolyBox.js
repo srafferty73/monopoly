@@ -12,7 +12,9 @@ class MonopolyBox extends Component {
     this.state = {
       properties: [],
       players: data.players,
-      game: data.game}
+      game: data.game,
+      chance: data.chance
+    }
     this.playerMove = this.playerMove.bind(this)
     this.endTurn = this.endTurn.bind(this);
     this.payRent = this.payRent.bind(this);
