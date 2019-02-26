@@ -26,7 +26,7 @@ const CardDisplay = ({propertyData, playerData, payRent, payTax, payBail, buyPro
 
   if (propertyData.name === "Chance"){
     const randomNumber = Math.floor(Math.random() * (13) +1);
-    const randomCard = chanceCards[randomNumber];
+    const randomCard = chanceCards[randomNumber-1];
     console.log(randomCard);
     var chanceDescription = <p className="chanceDescription">{randomCard.description}</p>
     var chanceButton = <button id="chance-continue" className="card-display-pay">Continue</button>
