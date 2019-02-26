@@ -1,10 +1,14 @@
 import React from 'react';
 
-const PlayerProperty = ({propertyData, buyHouses, sellProperty}) => {
+const PlayerProperty = ({currentPlayer, propertyData, buyHouses, sellProperty}) => {
 
-  if ((propertyData.rent_status >= 1) && (propertyData.rent_status < 6)){
-    var buyHousesButton = <button onClick={() => buyHouses(propertyData.position)}>Buy Houses</button>
+  if (currentPlayer === parseInt(propertyData.owner)) {
+    console.log("Hi");
+    if ((propertyData.rent_status >= 1) && (propertyData.rent_status < 6)){
+      var buyHousesButton = <button onClick={() => buyHouses(propertyData.position)}>Buy Houses</button>
+    }
   }
+
 
   return(
     <div className="playerProperty">
