@@ -530,3 +530,8 @@ code {
   color: rgba(0,255,100,1);
   text-shadow: 0 0 2px black;
 }
+
+.chanceDescription {
+  background-color: none;
+  text-align: center;
+}
