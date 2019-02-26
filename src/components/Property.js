@@ -17,20 +17,6 @@ const Property = ({allData, player1, player2}) => {
   var checkPlayer2 = <div className='two'><i className={player2.icon}></i></div>
   }
 
-  // if (player1.jail_counter > 0) {
-  //   checkPlayer1.classList.add('in-jail');
-  // }
-  // else {
-  //   checkPlayer1.classList.remove('in-jail');
-  // }
-  //
-  // if (player2.jail_counter > 0) {
-  //   checkPlayer2.classList.add('in-jail');
-  // }
-  // else {
-  //   checkPlayer2.classList.remove('in-jail');
-  // }
-
   return(
     <div className="property">
       {colorBox}
