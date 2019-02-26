@@ -24,6 +24,10 @@ const CardDisplay = ({propertyData, playerData, payRent, payTax, payBail, buyPro
     }
   }
 
+  if (propertyData.name === "Chance"){
+    const randomNumber = Math.floor(Math.random() * (13) +1);
+  }
+
   if ((propertyData.owner === "Government") && (playerData.status === "start")){
     var payTaxButton = <button id="pay-tax" className="card-display-pay" onClick={payTax}>Pay Tax</button>
   }
