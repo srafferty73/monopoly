@@ -1,6 +1,6 @@
 import React from 'react';
 
-const CardDisplay = ({propertyData, playerData, payRent, payTax, payBail, buyProperty, chanceCards, chanceNum, currentPlayer, dice1, dice2, chanceCard}) => {
+const CardDisplay = ({propertyData, playerData, payRent, payTax, payBail, buyProperty, chanceCards, chanceNum, currentPlayer, dice1, dice2, chanceCard, players}) => {
 
   if (propertyData.color !== ""){
     var colorBox = <div id="card-display-color" className={propertyData.color}></div>
@@ -17,7 +17,7 @@ const CardDisplay = ({propertyData, playerData, payRent, payTax, payBail, buyPro
       }
     }
     else {
-      priceBox = <h3 className="card-display-price">Owner: Player {propertyData.owner}</h3>
+      priceBox = <h3 className="card-display-price">Owner: {players[parseInt(propertyData.owner)].name}</h3>
       if ((parseInt(propertyData.owner) !== playerData.id) && (playerData.status === "start")){
         var payRentButton = <button id="pay-rent" className="card-display-pay" onClick={payRent}>Pay Rent</button>
       }
@@ -50,7 +50,7 @@ const CardDisplay = ({propertyData, playerData, payRent, payTax, payBail, buyPro
     var payTaxButton = <button id="pay-tax" className="card-display-pay" onClick={payTax}>Pay Tax</button>
   }
 
-  if ((propertyData.position === 10) && (playerData.jail_counter > 0) && (playerData.status !=="end")){
+  if ((propertyData.position === 10) && (playerData.jail_counter > 0) && (playerData.status ==="begin")){
     var payBailButton = <button id="pay-bail" className="card-display-pay" onClick={payBail}>Pay Bail</button>
   }
 

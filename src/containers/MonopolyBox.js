@@ -94,6 +94,10 @@ class MonopolyBox extends Component {
           const updatedFunds = this.state.players[this.state.game.current_player].money + 200;
           this.setStateHelper("players", this.state.game.current_player, "money", updatedFunds);
         }
+        if (updatedPosition === 10){
+          this.setStateHelper("players", this.state.game.current_player, "jail_counter", 1);
+          // this.buttonToggleHelper('pay-bail', "add");
+        }
       }
     }
     if (currentCard.pay !== 0){
@@ -104,8 +108,8 @@ class MonopolyBox extends Component {
       const collectMoney = this.state.players[this.state.game.current_player].money + currentCard.collect;
       this.setStateHelper("players", this.state.game.current_player, "money", collectMoney);
     }
-    this.setStateHelper("players", this.state.game.current_player, "status", "end");
-    this.endTurn();
+    this.buttonToggleHelper('chance-continue', "add");
+    // this.setStateHelper("players", this.state.game.current_player, "status", "end");
   }
 
   diceRoll(){
@@ -417,6 +421,7 @@ class MonopolyBox extends Component {
                        dice1={this.state.game.current_roll1}
                        dice2={this.state.game.current_roll2}
                        chanceCard={this.chanceCard}
+                       players={this.state.players}
                        />
           <DiceRoll playerMove={this.playerMove} endTurn={this.endTurn}/>
           <DiceNumbers dice1={this.state.game.current_roll1} dice2={this.state.game.current_roll2}/>
