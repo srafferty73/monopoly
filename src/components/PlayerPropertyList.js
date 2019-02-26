@@ -4,7 +4,7 @@ import PlayerProperty from './PlayerProperty';
 const PlayerPropertyList = ({player, properties, buyHouses, sellProperty, currentPlayer}) => {
   var playerPropertyNodes = properties.map((property, index) => {
     return(
-      <PlayerProperty currentPlayer={currentPlayer} propertyData={property} buyHouses={buyHouses} sellProperty={sellProperty}/>
+      <PlayerProperty currentPlayer={currentPlayer} player={player} propertyData={property} buyHouses={buyHouses} sellProperty={sellProperty}/>
     )
   })
 
