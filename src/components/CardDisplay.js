@@ -28,7 +28,7 @@ const CardDisplay = ({propertyData, playerData, payRent, payTax, payBail, buyPro
     var payTaxButton = <button id="pay-tax" className="card-display-pay" onClick={payTax}>Pay Tax</button>
   }
 
-  if (propertyData.position === 10){
+  if (propertyData.position === 10 && playerData.jail_counter > 0){
     var payBailButton = <button id="pay-bail" className="card-display-pay" onClick={payBail}>Pay Bail</button>
   }
 
