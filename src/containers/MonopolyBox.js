@@ -79,6 +79,13 @@ class MonopolyBox extends Component {
     this.setStateHelper("game", "ignore", "chance_num", randomNumber);
   }
 
+  checkChance(){
+    if (this.state.players[this.state.game.current_player].current_position === 7){
+      console.log("Chance card");
+      this.buttonToggleHelper('end-turn', "add");
+    }
+  }
+
   chanceCard(){
     const currentCard = this.state.chance[this.state.game.chance_num-1];
     if (currentCard.move_to !== ""){
@@ -109,6 +116,7 @@ class MonopolyBox extends Component {
       this.setStateHelper("players", this.state.game.current_player, "money", collectMoney);
     }
     this.buttonToggleHelper('chance-continue', "add");
+    this.buttonToggleHelper('end-turn', "remove");
     // this.setStateHelper("players", this.state.game.current_player, "status", "end");
   }
 
@@ -359,8 +367,9 @@ class MonopolyBox extends Component {
     this.getChanceNumber();
     this.diceRoll();
     this.findNewPosition();
-    this.passGo();
     this.updateDoubleCounter();
+    this.checkChance();
+    this.passGo();
     this.goToJail();
     this.checkOwner();
   }
