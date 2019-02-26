@@ -6,6 +6,7 @@ players: [
     name: "John",
     money: 1500,
     current_position: 0,
+    jail_counter: 0,
     status: "end",
     icon:"fas fa-dog"
   },
@@ -14,6 +15,7 @@ players: [
     name: "Bill",
     money: 1500,
     current_position: 0,
+    jail_counter: 0,
     status: "end",
     icon: "fas fa-car-side"
   }

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const CardDisplay = ({propertyData, playerData, payRent, payTax, buyProperty}) => {
+const CardDisplay = ({propertyData, playerData, payRent, payTax, payBail, buyProperty}) => {
 
   if (propertyData.color !== ""){
     var colorBox = <div id="card-display-color" className={propertyData.color}></div>
@@ -26,6 +26,10 @@ const CardDisplay = ({propertyData, playerData, payRent, payTax, buyProperty}) =
 
   if ((propertyData.owner === "Government") && (playerData.status === "start")){
     var payTaxButton = <button id="pay-tax" className="card-display-pay" onClick={payTax}>Pay Tax</button>
+  }
+
+  if (propertyData.position === 10 && playerData.jail_counter > 0){
+    var payBailButton = <button id="pay-bail" className="card-display-pay" onClick={payBail}>Pay Bail</button>
   }
 
   var rentPrices = propertyData.rent.map((item, index) => {
@@ -75,6 +79,7 @@ const CardDisplay = ({propertyData, playerData, payRent, payTax, buyProperty}) =
       {buyBox}
       {payRentButton}
       {payTaxButton}
+      {payBailButton}
     </div>
   )
 }
