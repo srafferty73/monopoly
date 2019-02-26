@@ -1,6 +1,6 @@
 import React from 'react';
 
-const CardDisplay = ({propertyData, playerData, payRent, payTax, payBail, buyProperty, chanceCards}) => {
+const CardDisplay = ({propertyData, playerData, payRent, payTax, payBail, buyProperty, chanceCards, chanceNum, currentPlayer}) => {
 
   if (propertyData.color !== ""){
     var colorBox = <div id="card-display-color" className={propertyData.color}></div>
@@ -25,8 +25,7 @@ const CardDisplay = ({propertyData, playerData, payRent, payTax, payBail, buyPro
   }
 
   if (propertyData.name === "Chance"){
-    const randomNumber = Math.floor(Math.random() * (13) +1);
-    const randomCard = chanceCards[randomNumber-1];
+    const randomCard = chanceCards[chanceNum-1];
     console.log(randomCard);
     var chanceDescription = <p className="chanceDescription">{randomCard.description}</p>
     var chanceButton = <button id="chance-continue" className="card-display-pay">Continue</button>
@@ -36,7 +35,7 @@ const CardDisplay = ({propertyData, playerData, payRent, payTax, payBail, buyPro
     var payTaxButton = <button id="pay-tax" className="card-display-pay" onClick={payTax}>Pay Tax</button>
   }
 
-  if ((propertyData.position === 10) && (playerData.jail_counter > 0) && (playerData.status !=="start")){
+  if ((propertyData.position === 10) && (playerData.jail_counter > 0) && (playerData.status ==="start")){
     var payBailButton = <button id="pay-bail" className="card-display-pay" onClick={payBail}>Pay Bail</button>
   }
 

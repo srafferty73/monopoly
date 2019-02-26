@@ -4,7 +4,7 @@ players: [
   {
     id: 0,
     name: "John",
-    money: 100,
+    money: 1500,
     current_position: 0,
     status: "end",
     icon:"fas fa-dog",
@@ -13,7 +13,7 @@ players: [
   {
     id: 1,
     name: "Bill",
-    money: 100,
+    money: 1500,
     current_position: 0,
     status: "end",
     icon: "fas fa-car-side",
@@ -25,7 +25,8 @@ game: {
   current_roll1: null,
   current_roll2: null,
   double_counter: 0,
-  winner: null
+  winner: null,
+  chance_num: 0
 },
 chance: [
   {
