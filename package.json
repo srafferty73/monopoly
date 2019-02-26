@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "animejs": "^3.0.1",
     "express": "^4.16.4",
     "react": "^16.8.2",
     "react-animations": "^1.0.0",
