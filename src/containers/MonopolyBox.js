@@ -167,7 +167,9 @@ class MonopolyBox extends Component {
 
   checkForSets(){
     const currentPlayer = this.state.game.current_player;
-    const currentProperty = this.state.properties[this.state.players[currentPlayer].current_position]
+    const currentProperty = this.state.properties[this.state.players[currentPlayer].current_position];
+    const otherProperties = currentProperty.other_properties;
+
     const ownerOtherProperties = currentProperty.other_properties.map((property) => {
       return this.state.properties[property].owner;
     })
@@ -175,10 +177,15 @@ class MonopolyBox extends Component {
     const uniqueSet = new Set(ownerOtherProperties);
     const uniqueArray = Array.from(uniqueSet);
 
-    console.log(uniqueArray);
+    if (ownerOtherProperties.length >= 2) {
+      if (uniqueArray.length === 1) {
+        otherProperties.forEach((position) => {
+          this.setStateHelper("properties", position, "rent_status", 1)
+        })
+        this.setStateHelper("properties", currentProperty.position, "rent_status", 1);
+      }
+    }
   }
-
-
 
   sellProperty(index){
     const currentProperty = this.state.properties[index];
