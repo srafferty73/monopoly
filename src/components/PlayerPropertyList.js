@@ -1,10 +1,10 @@
 import React from 'react';
 import PlayerProperty from './PlayerProperty';
 
-const PlayerPropertyList = ({player, properties, sellProperty}) => {
+const PlayerPropertyList = ({player, properties, buyHouses, sellProperty}) => {
   var playerPropertyNodes = properties.map((property, index) => {
     return(
-      <PlayerProperty propertyData={property} sellProperty={sellProperty}/>
+      <PlayerProperty propertyData={property} buyHouses={buyHouses} sellProperty={sellProperty}/>
     )
   })
 return(
