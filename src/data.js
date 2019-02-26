@@ -7,7 +7,8 @@ players: [
     money: 1500,
     current_position: 0,
     status: "end",
-    icon:"fas fa-dog"
+    icon:"fas fa-dog",
+    jail_counter: 0
   },
   {
     id: 1,
@@ -15,7 +16,8 @@ players: [
     money: 1500,
     current_position: 0,
     status: "end",
-    icon: "fas fa-car-side"
+    icon: "fas fa-car-side",
+    jail_counter: 0
   }
 ],
 game: {
