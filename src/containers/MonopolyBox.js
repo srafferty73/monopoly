@@ -292,7 +292,7 @@ class MonopolyBox extends Component {
 (
 
       <div className="monopoly-box">
-        <PlayerPropertyList player={this.state.players[0]} properties={player1Properties} buyHouses={this.buyHouses} sellProperty={this.sellProperty}/>
+        <PlayerPropertyList player={this.state.players[0]} properties={player1Properties} buyHouses={this.buyHouses} sellProperty={this.sellProperty} currentPlayer={this.state.game.current_player}/>
         <div className="monopoly-container">
           <CardDisplay propertyData={this.state.properties[this.state.players[this.state.game.current_player].current_position]}
                        playerData={this.state.players[this.state.game.current_player]}
@@ -307,7 +307,7 @@ class MonopolyBox extends Component {
           <MonopolyList properties={row3} players={this.state.players}/>
           <MonopolyList properties={row4} players={this.state.players}/>
         </div>
-        <PlayerPropertyList player={this.state.players[1]} properties={player2Properties} buyHouses={this.buyHouses} sellProperty={this.sellProperty}/>
+        <PlayerPropertyList player={this.state.players[1]} properties={player2Properties} buyHouses={this.buyHouses} sellProperty={this.sellProperty} currentPlayer={this.state.game.current_player}/>
       </div>
     )
       return(
