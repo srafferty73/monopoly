@@ -32,7 +32,15 @@ const CardDisplay = ({propertyData, playerData, payRent, payTax, buyProperty}) =
     if (propertyData.rent.length === 1){
       var detail = "Amount"
     }
-    if (propertyData.rent.length === 4){
+    else if (propertyData.rent.length === 2){
+      if (index === 0){
+        detail = "1 Utility";
+      }
+      else {
+        detail = "2 Utilities";
+      }
+    }
+    else if (propertyData.rent.length === 4){
       if (index === 0){
         detail = `${index+1} Station`
       }
