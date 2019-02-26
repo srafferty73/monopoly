@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import './App.css';
-import MonopolyBox from './containers/MonopolyBox';
+
+import Main from './components/frontend_router/Main';
 
 class App extends Component {
   render() {
     return(
-      <MonopolyBox />
+      <Main />
     );
   }
 }
