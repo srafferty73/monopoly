@@ -354,6 +354,7 @@ class MonopolyBox extends Component {
                        payTax={this.payTax}
                        payBail={this.payBail}
                        buyProperty={this.buyProperty}
+                       chanceCards={this.state.chance}
                        />
           <DiceRoll playerMove={this.playerMove} endTurn={this.endTurn}/>
           <DiceNumbers dice1={this.state.game.current_roll1} dice2={this.state.game.current_roll2}/>
