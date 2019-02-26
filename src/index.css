@@ -32,6 +32,9 @@ code {
   position: absolute;
   width: 100%;
   height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
   justify-content: center;
   background-color: blue;
   background: linear-gradient(to right, #FF8235, #30E8BF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
@@ -41,6 +44,9 @@ code {
   opacity: .75;
   font-size: 14em;
   color: red;
+  width: 100%;
+  text-align: center;
+  text-shadow: 0 0 10px black;
 }
 
 h1 span {
