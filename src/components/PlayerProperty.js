@@ -1,12 +1,16 @@
 import React from 'react';
 
-const PlayerProperty = ({propertyData, sellProperty}) => {
+const PlayerProperty = ({propertyData, buyHouses, sellProperty}) => {
+
+  if (propertyData.rent_status >= 1) {
+    var buyHousesButton = <button onClick={() => buyHouses(propertyData.position)}>Buy Houses</button>
+  }
 
   return(
     <div className="playerProperty">
     <div id="smallColors" className={propertyData.color}/>
     <p>{propertyData.name}</p>
-    <button>Buy Houses</button>
+    {buyHousesButton}
     <button id="sell-button" value={propertyData.position} onClick={() => sellProperty(propertyData.position)}>Sell</button>
     </div>
   )

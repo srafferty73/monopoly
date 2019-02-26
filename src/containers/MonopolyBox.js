@@ -19,6 +19,7 @@ class MonopolyBox extends Component {
     this.payTax = this.payTax.bind(this);
     this.buyProperty = this.buyProperty.bind(this);
     this.sellProperty = this.sellProperty.bind(this);
+    this.buyHouses = this.buyHouses.bind(this);
   }
 
   componentDidMount(){
@@ -167,7 +168,9 @@ class MonopolyBox extends Component {
 
   checkForSets(){
     const currentPlayer = this.state.game.current_player;
-    const currentProperty = this.state.properties[this.state.players[currentPlayer].current_position]
+    const currentProperty = this.state.properties[this.state.players[currentPlayer].current_position];
+    const otherProperties = currentProperty.other_properties;
+
     const ownerOtherProperties = currentProperty.other_properties.map((property) => {
       return this.state.properties[property].owner;
     })
@@ -175,10 +178,30 @@ class MonopolyBox extends Component {
     const uniqueSet = new Set(ownerOtherProperties);
     const uniqueArray = Array.from(uniqueSet);
 
-    console.log(uniqueArray);
+    if (ownerOtherProperties.length >= 2) {
+      if (uniqueArray.length === 1) {
+        otherProperties.forEach((position) => {
+          this.setStateHelper("properties", position, "rent_status", 1)
+        })
+        this.setStateHelper("properties", currentProperty.position, "rent_status", 1);
+      }
+    }
   }
 
+  buyHouses(index){
+    const currentProperty = this.state.properties[index];
+    const updatedRentStatus = currentProperty.rent_status + 1;
+    this.setStateHelper("properties", index, "rent_status", updatedRentStatus);
 
+    const housePrice = currentProperty.row * 50;
+    const houseOwner = parseInt(currentProperty.owner);
+    const ownerMoney = this.state.players[houseOwner].money
+    const updatedMoney = ownerMoney - housePrice;
+    this.setStateHelper("players", houseOwner, "money", updatedMoney);
+
+    console.log(housePrice);
+    console.log(houseOwner);
+  }
 
   sellProperty(index){
     const currentProperty = this.state.properties[index];
@@ -260,7 +283,7 @@ class MonopolyBox extends Component {
 (
 
       <div className="monopoly-box">
-        <PlayerPropertyList player={this.state.players[0]} properties={player1Properties} sellProperty={this.sellProperty}/>
+        <PlayerPropertyList player={this.state.players[0]} properties={player1Properties} buyHouses={this.buyHouses} sellProperty={this.sellProperty}/>
         <div className="monopoly-container">
           <CardDisplay propertyData={this.state.properties[this.state.players[this.state.game.current_player].current_position]}
                        playerData={this.state.players[this.state.game.current_player]}
@@ -275,7 +298,7 @@ class MonopolyBox extends Component {
           <MonopolyList properties={row3} players={this.state.players}/>
           <MonopolyList properties={row4} players={this.state.players}/>
         </div>
-        <PlayerPropertyList player={this.state.players[1]} properties={player2Properties} sellProperty={this.sellProperty}/>
+        <PlayerPropertyList player={this.state.players[1]} properties={player2Properties} buyHouses={this.buyHouses} sellProperty={this.sellProperty}/>
       </div>
     )
       return(
