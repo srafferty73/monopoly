@@ -1,6 +1,6 @@
 import React from 'react';
 
-const CardDisplay = ({propertyData, playerData, payRent, payTax, payBail, buyProperty, chanceCards, chanceNum, currentPlayer}) => {
+const CardDisplay = ({propertyData, playerData, payRent, payTax, payBail, buyProperty, chanceCards, chanceNum, currentPlayer, dice1, dice2}) => {
 
   if (propertyData.color !== ""){
     var colorBox = <div id="card-display-color" className={propertyData.color}></div>
@@ -21,6 +21,19 @@ const CardDisplay = ({propertyData, playerData, payRent, payTax, payBail, buyPro
       if ((parseInt(propertyData.owner) !== playerData.id) && (playerData.status === "start")){
         var payRentButton = <button id="pay-rent" className="card-display-pay" onClick={payRent}>Pay Rent</button>
       }
+    }
+  }
+
+  if (propertyData.name === "GO"){
+    var goDescription = <p className="go-description">Collect £200</p>
+  }
+
+  if (propertyData.name === "Jail"){
+    if (playerData.jail_counter > 0){
+      var jailDescription = <div className="jail-description"><p>Roll a Double</p><p>or</p><p>Pay $50 Bail</p></div>
+    }
+    else {
+      jailDescription = <p className="jail-description">Just Visiting</p>
     }
   }
 
@@ -46,9 +59,13 @@ const CardDisplay = ({propertyData, playerData, payRent, payTax, payBail, buyPro
     else if (propertyData.rent.length === 2){
       if (index === 0){
         detail = "1 Utility";
+        const totalDice = dice1 + dice2
+        item *= totalDice;
       }
       else {
         detail = "2 Utilities";
+        const totalDice = dice1 + dice2
+        item *= totalDice;
       }
     }
     else if (propertyData.rent.length === 4){
@@ -80,6 +97,8 @@ const CardDisplay = ({propertyData, playerData, payRent, payTax, payBail, buyPro
       {noColorBox}
       <h2>{propertyData.name}</h2>
       {priceBox}
+      {goDescription}
+      {jailDescription}
       {chanceDescription}
       <div className="rent-list">
         {rentPrices}

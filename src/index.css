@@ -531,6 +531,14 @@ code {
   text-shadow: 0 0 2px black;
 }
 
+.go-description {
+  text-align: center;
+}
+
+.jail-description {
+  text-align: center;
+}
+
 .chanceDescription {
   background-color: none;
   text-align: center;
