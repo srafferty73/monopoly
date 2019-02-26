@@ -28,12 +28,44 @@ const CardDisplay = ({propertyData, playerData, payRent, payTax, buyProperty}) =
     var payTaxButton = <button id="pay-tax" className="card-display-pay" onClick={payTax}>Pay Tax</button>
   }
 
+  var rentPrices = propertyData.rent.map((item, index) => {
+    if (propertyData.rent.length === 1){
+      var detail = "Amount"
+    }
+    if (propertyData.rent.length === 4){
+      if (index === 0){
+        detail = `${index+1} Station`
+      }
+      else {
+        detail = `${index+1} Stations`
+      }
+    }
+    else {
+      if (index === 0){
+        detail = "Rent"
+      }
+      else if (index === 1) {
+        detail = "Set"
+      }
+      else {
+        detail = `House ${index-1}`
+      }
+    }
+    return <div><p>{detail}</p><p>£{item}</p></div>
+  })
+
+
+  // const rentPrices = propertyData.rent[0];
+
   return(
     <div className="card-display">
       {colorBox}
       {noColorBox}
       <h2>{propertyData.name}</h2>
       {priceBox}
+      <div className="rent-list">
+        {rentPrices}
+      </div>
       {buyBox}
       {payRentButton}
       {payTaxButton}

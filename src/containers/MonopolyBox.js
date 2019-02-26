@@ -191,9 +191,13 @@ class MonopolyBox extends Component {
   payTax(){
     const currentProperty = this.state.properties[this.state.players[this.state.game.current_player].current_position];
     const updatedPlayer = this.state.players[this.state.game.current_player].money - currentProperty.rent[currentProperty.rent_status];
+    console.log(currentProperty);
     this.setStateHelper("players", this.state.game.current_player, "money", updatedPlayer);
     this.buttonToggleHelper('pay-tax', 'add');
-    this.buttonToggleHelper('end-turn', 'remove');
+
+    if (this.state.game.current_roll1 !== this.state.game.current_roll2){
+      this.buttonToggleHelper('end-turn', 'remove');
+    }
   }
 
   playerMove(){
