@@ -602,3 +602,21 @@ code {
 .green-rent {
   color: green;
 }
+
+.GameBox a {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 10px 20px;
+  margin: 20px;
+  text-decoration: none;
+  font-weight: 700;
+  background-color: rgba(0,0,0,.1);
+  border-radius: 50px;
+  color: black;
+}
+
+.GameBox a:hover {
+  background-color: rgba(0,0,0,.2);
+  color: lightgreen;
+}
