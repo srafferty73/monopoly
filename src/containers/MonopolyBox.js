@@ -17,6 +17,7 @@ class MonopolyBox extends Component {
     this.endTurn = this.endTurn.bind(this);
     this.payRent = this.payRent.bind(this);
     this.payTax = this.payTax.bind(this);
+    this.payBail = this.payBail.bind(this);
     this.buyProperty = this.buyProperty.bind(this);
     this.sellProperty = this.sellProperty.bind(this);
   }
@@ -72,8 +73,8 @@ class MonopolyBox extends Component {
     this.buttonToggleHelper('dice-roll', 'add');
     const dice1 = Math.floor(Math.random() * (6) +1);
     const dice2 = Math.floor(Math.random() * (6) +1);
-    this.setStateHelper("game", "ignore", "current_roll1", dice1);
-    this.setStateHelper("game", "ignore", "current_roll2", dice2);
+    this.setStateHelper("game", "ignore", "current_roll1", 2);
+    this.setStateHelper("game", "ignore", "current_roll2", 2);
   }
 
   findNewPosition(){
@@ -222,7 +223,9 @@ class MonopolyBox extends Component {
     this.setStateHelper("players", theOwner, "money", updatedOwner);
     this.setStateHelper("players", this.state.game.current_player, "money", updatedPlayer);
     this.buttonToggleHelper('pay-rent', 'add');
-    this.buttonToggleHelper('end-turn', 'remove');
+    if (this.state.game.current_roll1 !== this.state.game.current_roll2){
+      this.buttonToggleHelper('end-turn', 'remove');
+    }
   }
 
   payTax(){
@@ -235,6 +238,15 @@ class MonopolyBox extends Component {
     if (this.state.game.current_roll1 !== this.state.game.current_roll2){
       this.buttonToggleHelper('end-turn', 'remove');
     }
+  }
+
+  payBail(){
+    const currentProperty = this.state.properties[this.state.players[this.state.game.current_player].current_position];
+    const updatedPlayer = this.state.players[this.state.game.current_player].money - 50;
+    this.setStateHelper("players", this.state.game.current_player, "money", updatedPlayer);
+    this.buttonToggleHelper('pay-bail', 'add');
+    this.buttonToggleHelper('roll-dice', 'add')
+    this.buttonToggleHelper('end-turn', 'remove');
   }
 
   playerMove(){
@@ -292,6 +304,7 @@ class MonopolyBox extends Component {
                        playerData={this.state.players[this.state.game.current_player]}
                        payRent={this.payRent}
                        payTax={this.payTax}
+                       payBail={this.payBail}
                        buyProperty={this.buyProperty}
                        />
           <DiceRoll playerMove={this.playerMove} endTurn={this.endTurn}/>
