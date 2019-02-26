@@ -192,6 +192,15 @@ class MonopolyBox extends Component {
     const currentProperty = this.state.properties[index];
     const updatedRentStatus = currentProperty.rent_status + 1;
     this.setStateHelper("properties", index, "rent_status", updatedRentStatus);
+
+    const housePrice = currentProperty.row * 50;
+    const houseOwner = parseInt(currentProperty.owner);
+    const ownerMoney = this.state.players[houseOwner].money
+    const updatedMoney = ownerMoney - housePrice;
+    this.setStateHelper("players", houseOwner, "money", updatedMoney);
+
+    console.log(housePrice);
+    console.log(houseOwner);
   }
 
   sellProperty(index){
