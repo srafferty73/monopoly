@@ -55,8 +55,6 @@ const CardDisplay = ({propertyData, playerData, payRent, payTax, buyProperty}) =
   })
 
 
-  // const rentPrices = propertyData.rent[0];
-
   return(
     <div className="card-display">
       {colorBox}

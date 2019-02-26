@@ -159,14 +159,26 @@ class MonopolyBox extends Component {
     let propertyPrice = this.state.properties[this.state.players[this.state.game.current_player].current_position].price
     let updatedMoney = this.state.players[this.state.game.current_player].money - propertyPrice;
 
-    console.log(propertyPrice);
-    console.log(updatedMoney);
-
     this.setStateHelper("properties", this.state.players[this.state.game.current_player].current_position, "owner", newOwner);
     this.setStateHelper("players", this.state.game.current_player, "money", updatedMoney);
 
-    // const updated
+    this.checkForSets();
   }
+
+  checkForSets(){
+    const currentPlayer = this.state.game.current_player;
+    const currentProperty = this.state.properties[this.state.players[currentPlayer].current_position]
+    const ownerOtherProperties = currentProperty.other_properties.map((property) => {
+      return this.state.properties[property].owner;
+    })
+    ownerOtherProperties.push(currentProperty.owner);
+    const uniqueSet = new Set(ownerOtherProperties);
+    const uniqueArray = Array.from(uniqueSet);
+
+    console.log(uniqueArray);
+  }
+
+
 
   sellProperty(index){
     const currentProperty = this.state.properties[index];
