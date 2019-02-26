@@ -499,3 +499,7 @@ code {
   color: grey;
   background-color: #fbd7d7;
 }
+
+.in-jail {
+  color: red;
+}
