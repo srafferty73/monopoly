@@ -1,6 +1,6 @@
 import React from 'react';
 
-const CardDisplay = ({propertyData, playerData, payRent, payTax, payBail, buyProperty, chanceCards, chanceNum, currentPlayer, dice1, dice2, chanceCard, players, chestNum, chestCards, chestCard}) => {
+const CardDisplay = ({propertyData, playerData, allPlayers, payRent, payTax, payBail, buyProperty, chanceCards, chanceNum, currentPlayer, dice1, dice2, chanceCard, players, chestNum, chestCards, chestCard}) => {
 
   if (propertyData.color !== ""){
     var colorBox = <div id="card-display-color" className={propertyData.color}></div>
@@ -101,13 +101,28 @@ const CardDisplay = ({propertyData, playerData, payRent, payTax, payBail, buyPro
         detail = `House ${index-1}`
       }
     }
-    if (index === propertyData.rent_status){
-      return <div className="green-rent"><p>{detail}</p><p>£{item}</p></div>
+
+    if (propertyData.rent.length === 4){
+      const owner= parseInt(propertyData.owner)
+
+      if (index === allPlayers[owner].station_counter - 1){
+        return <div className="green-rent"><p>{detail}</p><p>£{item}</p></div>
+      }
+      else {
+        return <div><p>{detail}</p><p>£{item}</p></div>
+      }
     }
     else {
-      return <div><p>{detail}</p><p>£{item}</p></div>
+      if (index === propertyData.rent_status){
+      return <div className="green-rent"><p>{detail}</p><p>£{item}</p></div>
+      }
+      else {
+        return <div><p>{detail}</p><p>£{item}</p></div>
+      }
     }
-  })
+
+
+})
 
 
   return(
