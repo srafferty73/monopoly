@@ -14,7 +14,7 @@ const Home = () => (
     <span className='L'>L</span>
     <span className='Y'>Y</span>
     </h1>
-    <Link to="/game">New Game</Link>{" "}
+    <Link onClick="this.reloadRoute" to="/game">New Game</Link>{" "}
     <Link to="/rules">Rules</Link>
   </div>
 );
