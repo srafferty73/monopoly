@@ -413,7 +413,7 @@ class MonopolyBox extends Component {
     const theOwner = parseInt(currentProperty.owner);
     console.log(currentProperty);
 
-    if (currentProperty.other_properties.length < 3) {
+    if ((currentProperty.other_properties.length < 3) && (currentProperty.position !== 28) && (currentProperty.position !== 12)) {
       const updatedOwner = this.state.players[theOwner].money + currentProperty.rent[currentProperty.rent_status];
       const updatedPlayer = this.state.players[this.state.game.current_player].money - currentProperty.rent[currentProperty.rent_status];
       this.setStateHelper("players", theOwner, "money", updatedOwner);
@@ -426,6 +426,17 @@ class MonopolyBox extends Component {
     else if (currentProperty.other_properties.length === 3){
       const updatedOwner = this.state.players[theOwner].money + currentProperty.rent[this.state.players[theOwner].station_counter - 1];
       const updatedPlayer = this.state.players[this.state.game.current_player].money - currentProperty.rent[this.state.players[theOwner].station_counter - 1];
+      this.setStateHelper("players", theOwner, "money", updatedOwner);
+      this.setStateHelper("players", this.state.game.current_player, "money", updatedPlayer);
+      this.buttonToggleHelper('pay-rent', 'add');
+      if (this.state.game.current_roll1 !== this.state.game.current_roll2){
+        this.buttonToggleHelper('end-turn', 'remove');
+      }
+    }
+    else {
+      const total = this.state.game.current_roll1 + this.state.game.current_roll2;
+      const updatedOwner = this.state.players[theOwner].money + (currentProperty.rent[currentProperty.rent_status]*total);
+      const updatedPlayer = this.state.players[this.state.game.current_player].money - (currentProperty.rent[currentProperty.rent_status]*total);
       this.setStateHelper("players", theOwner, "money", updatedOwner);
       this.setStateHelper("players", this.state.game.current_player, "money", updatedPlayer);
       this.buttonToggleHelper('pay-rent', 'add');
