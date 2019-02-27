@@ -8,7 +8,8 @@ players: [
     current_position: 0,
     status: "end",
     icon:"fas fa-dog",
-    jail_counter: 0
+    jail_counter: 0,
+    station_counter: 0
   },
   {
     id: 1,
@@ -17,7 +18,8 @@ players: [
     current_position: 0,
     status: "end",
     icon: "fas fa-car-side",
-    jail_counter: 0
+    jail_counter: 0,
+    station_counter: 4
   }
 ],
 game: {
