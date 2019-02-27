@@ -18,7 +18,7 @@ const CardDisplay = ({propertyData, playerData, payRent, payTax, payBail, buyPro
     }
     else {
       priceBox = <h3 className="card-display-price">Owner: {players[parseInt(propertyData.owner)].name}</h3>
-      if ((parseInt(propertyData.owner) !== playerData.id) && (playerData.status === "start")){
+      if ((parseInt(propertyData.owner) !== playerData.id) && (playerData.status === "start") && (propertyData.mortgaged === false)){
         var payRentButton = <button id="pay-rent" className="card-display-pay" onClick={payRent}>Pay Rent</button>
       }
     }
