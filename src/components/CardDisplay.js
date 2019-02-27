@@ -50,7 +50,7 @@ const CardDisplay = ({propertyData, playerData, allPlayers, payRent, payTax, pay
     const randomCard = chestCards[chestNum-1];
     console.log(randomCard);
     if (playerData.status === "start"){
-    var chanceDescription = <p className="chanceDescription">{randomCard.description}</p>
+    chanceDescription = <p className="chanceDescription">{randomCard.description}</p>
       var chestButton = <button id="chest-continue" className="card-display-pay" onClick={chestCard}>Continue</button>
     }
   }

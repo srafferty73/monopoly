@@ -6,17 +6,17 @@ const PlayerProperty = ({currentPlayer, player, propertyData, buyHouses, sellPro
     if ((propertyData.rent_status >= 1) && (propertyData.rent_status < 5) && (propertyData.mortgaged===false) && ((propertyData.id === 12) || (propertyData.id === 28))){
       var buyHousesButton = <button id="buy-houses" onClick={() => buyHouses(propertyData.position)}>Buy Houses</button>
     }
-    else if ((propertyData.rent_status >= 1) && (propertyData.rent_status === 5)){  
-      var buyHousesButton = <button id="buy-houses" onClick={() => buyHouses(propertyData.position)}>Buy Hotel</button>
+    else if ((propertyData.rent_status >= 1) && (propertyData.rent_status === 5)){
+      buyHousesButton = <button id="buy-houses" onClick={() => buyHouses(propertyData.position)}>Buy Hotel</button>
     }
   }
 
   if ((propertyData.mortgaged === false) && (propertyData.rent_status < 2)){
-    var mortgagePropertyButton = <button onClick={() => mortgageProperty(propertyData.position)}>M</button>
+    var mortgagePropertyButton = <button onClick={() => mortgageProperty(propertyData.position)}><i class="fas fa-check"></i></button>
   }
 
   if (propertyData.mortgaged === true){
-    var unmortgagePropertyButton = <button onClick={() => unmortgageProperty(propertyData.position)}>UM</button>
+    var unmortgagePropertyButton = <button onClick={() => unmortgageProperty(propertyData.position)}><i class="fas fa-times"></i></button>
   }
 
 
