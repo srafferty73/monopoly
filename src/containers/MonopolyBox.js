@@ -335,7 +335,7 @@ class MonopolyBox extends Component {
     this.setStateHelper("properties", index, "rent_status", 0);
     const otherPropertiesArray = currentProperty.other_properties;
     otherPropertiesArray.forEach((propertyIndex) => {
-      this.setStateHelper("properties", index, "rent_status", 0)
+      this.setStateHelper("properties", propertyIndex, "rent_status", 0)
     })
   }
 
