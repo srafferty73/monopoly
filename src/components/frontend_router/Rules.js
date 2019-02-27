@@ -6,10 +6,13 @@ const Rules = () => {
     <div className="rules">
     <ol>
       <li>
-        Rule 1
+        Start Game
       </li>
       <li>
-        Rule 2
+        Play Game
+      </li>
+      <li>
+        Finish Game & Go Home
       </li>
     </ol>
 
