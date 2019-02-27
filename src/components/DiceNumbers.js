@@ -42,11 +42,11 @@ const DiceNumbers = ({dice1, dice2}) => {
   }
 
   return(
-  <div className="dice_numbers">
-    <div>{firstDice}</div>
-    <div>{secondDice}</div>
-  </div>
-)
+    <div className="dice_numbers">
+      <div>{firstDice}</div>
+      <div>{secondDice}</div>
+    </div>
+  )
 }
 
 export default DiceNumbers;

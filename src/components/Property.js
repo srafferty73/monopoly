@@ -5,34 +5,34 @@ const Property = ({allData, player1, player2}) => {
   // Show the current number of house/hotel images for each property on the board.
   if (allData.rent_status === 2){
     var houses =  <div className="houses">
-                    <i className="fas fa-home"></i>
-                  </div>
+      <i className="fas fa-home"></i>
+    </div>
   }
   else if (allData.rent_status === 3){
     houses =  <div className="houses">
-                    <i className="fas fa-home"></i>
-                    <i className="fas fa-home"></i>
-                  </div>
+      <i className="fas fa-home"></i>
+      <i className="fas fa-home"></i>
+    </div>
   }
   else if (allData.rent_status === 4){
     houses =  <div className="houses">
-                    <i className="fas fa-home"></i>
-                    <i className="fas fa-home"></i>
-                    <i className="fas fa-home"></i>
-                  </div>
+      <i className="fas fa-home"></i>
+      <i className="fas fa-home"></i>
+      <i className="fas fa-home"></i>
+    </div>
   }
   else if (allData.rent_status === 5){
     houses =  <div className="houses">
-                    <i className="fas fa-home"></i>
-                    <i className="fas fa-home"></i>
-                    <i className="fas fa-home"></i>
-                    <i className="fas fa-home"></i>
-                  </div>
+      <i className="fas fa-home"></i>
+      <i className="fas fa-home"></i>
+      <i className="fas fa-home"></i>
+      <i className="fas fa-home"></i>
+    </div>
   }
   else if (allData.rent_status === 6){
     houses =  <div className="hotel">
-                    <i className="fas fa-home"></i>
-                  </div>
+      <i className="fas fa-home"></i>
+    </div>
   }
 
   // Generate a color box if the property has a colour.
@@ -68,7 +68,7 @@ const Property = ({allData, player1, player2}) => {
       {colorBox}
       {noColorBox}
       <div className='propertyName'>
-      {allData.name}
+        {allData.name}
       </div>
       <div className='player-tokens'>
         {checkPlayer1}

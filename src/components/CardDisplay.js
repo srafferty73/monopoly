@@ -46,7 +46,7 @@ const CardDisplay = ({propertyData, playerData, allPlayers, payRent, payTax, pay
     const randomCard = chanceCards[chanceNum-1];
     console.log(randomCard);
     if (playerData.status === "start"){
-    var chanceDescription = <p className="chanceDescription">{randomCard.description}</p>
+      var chanceDescription = <p className="chanceDescription">{randomCard.description}</p>
       var chanceButton = <button id="chance-continue" className="card-display-pay" onClick={chanceCard}>Continue</button>
     }
   }
@@ -56,7 +56,7 @@ const CardDisplay = ({propertyData, playerData, allPlayers, payRent, payTax, pay
     const randomCard = chestCards[chestNum-1];
     console.log(randomCard);
     if (playerData.status === "start"){
-    chanceDescription = <p className="chanceDescription">{randomCard.description}</p>
+      chanceDescription = <p className="chanceDescription">{randomCard.description}</p>
       var chestButton = <button id="chest-continue" className="card-display-pay" onClick={chestCard}>Continue</button>
     }
   }
@@ -124,7 +124,7 @@ const CardDisplay = ({propertyData, playerData, allPlayers, payRent, payTax, pay
     }
     else {
       if (index === propertyData.rent_status){
-      return <div className="green-rent"><p>{detail}</p><p>£{item}</p></div>
+        return <div className="green-rent"><p>{detail}</p><p>£{item}</p></div>
       }
       else {
         return <div><p>{detail}</p><p>£{item}</p></div>
