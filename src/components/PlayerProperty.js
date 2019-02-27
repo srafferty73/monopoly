@@ -12,11 +12,11 @@ const PlayerProperty = ({currentPlayer, player, propertyData, buyHouses, sellPro
   }
 
   if ((propertyData.mortgaged === false) && (propertyData.rent_status < 2)){
-    var mortgagePropertyButton = <button onClick={() => mortgageProperty(propertyData.position)}>M</button>
+    var mortgagePropertyButton = <button onClick={() => mortgageProperty(propertyData.position)}><i class="fas fa-check"></i></button>
   }
 
   if (propertyData.mortgaged === true){
-    var unmortgagePropertyButton = <button onClick={() => unmortgageProperty(propertyData.position)}>UM</button>
+    var unmortgagePropertyButton = <button onClick={() => unmortgageProperty(propertyData.position)}><i class="fas fa-times"></i></button>
   }
 
 
