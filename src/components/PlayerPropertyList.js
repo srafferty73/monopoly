@@ -8,9 +8,11 @@ const PlayerPropertyList = ({player, properties, buyHouses, sellProperty, mortga
     )
   })
 
+  // Show an indicator above the current player.
   if (currentPlayer === player.id){
     var currentPlayerIndicator = <div className="player-indicator"><i className="fas fa-angle-down"></i></div>
   }
+  
 return(
   <div className="playerProperties">
     {currentPlayerIndicator}
