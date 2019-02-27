@@ -30,7 +30,7 @@ const CardDisplay = ({propertyData, playerData, payRent, payTax, payBail, buyPro
 
   if (propertyData.name === "Jail"){
     if (playerData.jail_counter > 0){
-      var jailDescription = <div className="jail-description"><p>Roll a Double</p><p>or</p><p>Pay $50 Bail</p></div>
+      var jailDescription = <div className="jail-description"><p>Roll a Double</p><p>or</p><p>Pay £50 Bail</p></div>
     }
     else {
       jailDescription = <p className="jail-description">Just Visiting</p>
