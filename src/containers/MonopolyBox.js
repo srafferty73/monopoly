@@ -367,9 +367,9 @@ class MonopolyBox extends Component {
     this.getChanceNumber();
     this.diceRoll();
     this.findNewPosition();
+    this.passGo();
     this.updateDoubleCounter();
     this.checkChance();
-    this.passGo();
     this.goToJail();
     this.checkOwner();
   }
