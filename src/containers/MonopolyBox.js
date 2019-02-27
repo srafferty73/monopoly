@@ -14,7 +14,8 @@ class MonopolyBox extends Component {
       properties: [],
       players: data.players,
       game: data.game,
-      chance: data.chance
+      chance: data.chance,
+      chest: data.chest
     }
     this.playerMove = this.playerMove.bind(this)
     this.endTurn = this.endTurn.bind(this);
@@ -25,6 +26,7 @@ class MonopolyBox extends Component {
     this.sellProperty = this.sellProperty.bind(this);
     this.buyHouses = this.buyHouses.bind(this);
     this.chanceCard = this.chanceCard.bind(this);
+    // this.chest = this.chest.bind(this);
   }
 
   componentDidMount(){
@@ -77,6 +79,11 @@ class MonopolyBox extends Component {
   getChanceNumber(){
     const randomNumber = Math.floor(Math.random() * (13) +1);
     this.setStateHelper("game", "ignore", "chance_num", randomNumber);
+  }
+
+  getChestNumber(){
+    const randomNumber = Math.floor(Math.random() * (15) +1);
+    this.setStateHelper("game", "ignore", "chest_num", randomNumber);
   }
 
   checkChance(){
@@ -373,6 +380,7 @@ class MonopolyBox extends Component {
     this.setPlayerStatus("start");
     this.updateJailCounter();
     this.getChanceNumber();
+    this.getChestNumber();
     this.diceRoll();
     this.findNewPosition();
     this.passGo();
@@ -439,6 +447,8 @@ class MonopolyBox extends Component {
                        dice2={this.state.game.current_roll2}
                        chanceCard={this.chanceCard}
                        players={this.state.players}
+                       chestNum={this.state.game.chest_num}
+                       chestCards={this.state.chest}
                        />
           <DiceRoll playerMove={this.playerMove} endTurn={this.endTurn}/>
           <DiceNumbers dice1={this.state.game.current_roll1} dice2={this.state.game.current_roll2}/>

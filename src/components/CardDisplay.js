@@ -1,6 +1,6 @@
 import React from 'react';
 
-const CardDisplay = ({propertyData, playerData, payRent, payTax, payBail, buyProperty, chanceCards, chanceNum, currentPlayer, dice1, dice2, chanceCard, players}) => {
+const CardDisplay = ({propertyData, playerData, payRent, payTax, payBail, buyProperty, chanceCards, chanceNum, currentPlayer, dice1, dice2, chanceCard, players, chestNum, chestCards}) => {
 
   if (propertyData.color !== ""){
     var colorBox = <div id="card-display-color" className={propertyData.color}></div>
@@ -43,6 +43,15 @@ const CardDisplay = ({propertyData, playerData, payRent, payTax, payBail, buyPro
     if (playerData.status === "start"){
     var chanceDescription = <p className="chanceDescription">{randomCard.description}</p>
       var chanceButton = <button id="chance-continue" className="card-display-pay" onClick={chanceCard}>Continue</button>
+    }
+  }
+
+  if (propertyData.name === "Community Chest"){
+    const randomCard = chestCards[chestNum-1];
+    console.log(randomCard);
+    if (playerData.status === "start"){
+    var chanceDescription = <p className="chanceDescription">{randomCard.description}</p>
+      var chestButton = <button id="chest-continue" className="card-display-pay" >Continue</button>
     }
   }
 
@@ -118,6 +127,7 @@ const CardDisplay = ({propertyData, playerData, payRent, payTax, payBail, buyPro
       {payTaxButton}
       {payBailButton}
       {chanceButton}
+      {chestButton}
     </div>
   )
 }

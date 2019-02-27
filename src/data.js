@@ -26,7 +26,8 @@ game: {
   current_roll2: null,
   double_counter: 0,
   winner: null,
-  chance_num: 0
+  chance_num: 0,
+  chest_num: 0
 },
 chance: [
   {
@@ -144,7 +145,7 @@ chance: [
     },
     {
       id: 3,
-      description: "Go to Jail. Go directly to jail. Do not pass Go. Do not collect $200.",
+      description: "Go to Jail. Go directly to jail. Do not pass Go. Do not collect £200.",
       move_to: "10",
       pay: 0,
       collect: 0
