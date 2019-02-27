@@ -80,7 +80,7 @@ class MonopolyBox extends Component {
   }
 
   checkChance(){
-    if (this.state.players[this.state.game.current_player].current_position === 7){
+    if ((this.state.players[this.state.game.current_player].current_position === 7) || (this.state.players[this.state.game.current_player].current_position === 22) || (this.state.players[this.state.game.current_player].current_position === 36)){
       console.log("Chance card");
       this.buttonToggleHelper('end-turn', "add");
     }
