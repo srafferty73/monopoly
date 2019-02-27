@@ -8,20 +8,20 @@ const Property = ({allData, player1, player2}) => {
                   </div>
   }
   else if (allData.rent_status === 3){
-    var houses =  <div className="houses">
+    houses =  <div className="houses">
                     <i className="fas fa-home"></i>
                     <i className="fas fa-home"></i>
                   </div>
   }
   else if (allData.rent_status === 4){
-    var houses =  <div className="houses">
+    houses =  <div className="houses">
                     <i className="fas fa-home"></i>
                     <i className="fas fa-home"></i>
                     <i className="fas fa-home"></i>
                   </div>
   }
   else if (allData.rent_status === 5){
-    var houses =  <div className="houses">
+    houses =  <div className="houses">
                     <i className="fas fa-home"></i>
                     <i className="fas fa-home"></i>
                     <i className="fas fa-home"></i>
@@ -29,7 +29,7 @@ const Property = ({allData, player1, player2}) => {
                   </div>
   }
   else if (allData.rent_status === 6){
-    var houses =  <div className="hotel">
+    houses =  <div className="hotel">
                     <i className="fas fa-home"></i>
                   </div>
   }
@@ -56,7 +56,7 @@ const Property = ({allData, player1, player2}) => {
       var checkPlayer2 = <div className='two in-jail'><i className={player2.icon}></i></div>
     }
     else {
-      var checkPlayer2 = <div className='two'><i className={player2.icon}></i></div>
+      checkPlayer2 = <div className='two'><i className={player2.icon}></i></div>
     }
   }
 
