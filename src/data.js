@@ -119,8 +119,114 @@ chance: [
     move_to: "",
     pay: 20,
     collect: 0
-  }
-]
+  }],
+  chest: [
+    {
+      id: 0,
+      description: "Bank error in your favour! Collect £200",
+      move_to: "",
+      pay: 0,
+      collect: 200
+    },
+    {
+      id: 1,
+      description: "Advance to GO",
+      move_to: "0",
+      pay: 0,
+      collect: 200
+    },
+    {
+      id: 2,
+      description: "Doctor's fees. Pay £50.",
+      move_to: "",
+      pay: 50,
+      collect: 0
+    },
+    {
+      id: 3,
+      description: "Go to Jail. Go directly to jail. Do not pass Go. Do not collect $200.",
+      move_to: "10",
+      pay: 0,
+      collect: 0
+    },
+    {
+      id: 4,
+      description: "From sale of stock you get £50",
+      move_to: "",
+      pay: 50,
+      collect: 0
+    },
+    {
+      id: 5,
+      description: "Holiday fund matures. Receive £100",
+      move_to: "",
+      pay: 0,
+      collect: 100
+    },
+    {
+      id: 6,
+      description: "Speeding Fine £15",
+      move_to: "",
+      pay: 15,
+      collect: 0
+    },
+    {
+      id: 7,
+      description: "Income tax refund. Collect £20",
+      move_to: "",
+      pay: 0,
+      collect: 20
+    },
+    {
+      id: 8,
+      description: "It's your birthday. Collect £10",
+      move_to: "",
+      pay: 0,
+      collect: 10
+    },
+    {
+      id: 9,
+      description: "Life insurace matures. Collect £100",
+      move_to: "",
+      pay: 0,
+      collect: 100
+    },
+    {
+      id: 10,
+      description: "Hospital fees. Pay £50",
+      move_to: "",
+      pay: 50,
+      collect: 0
+    },
+    {
+      id: 11,
+      description: "School fees. Pay £50",
+      move_to: "",
+      pay: 0,
+      collect: 50
+    },
+    {
+      id: 12,
+      description: "Receive £25 consultancy fee",
+      move_to: "",
+      pay: 0,
+      collect: 25
+    },
+    {
+      id: 13,
+      description: "You have won second place in a beauty contest. Collect £10",
+      move_to: "",
+      pay: 0,
+      collect: 10
+    },
+    {
+      id: 14,
+      description: "You inherit £100",
+      move_to: "",
+      pay: 0,
+      collect: 100
+    }
+  ]
 }
 
 export default data;
