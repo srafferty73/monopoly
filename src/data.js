@@ -19,7 +19,7 @@ players: [
     status: "end",
     icon: "fas fa-car-side",
     jail_counter: 0,
-    station_counter: 4
+    station_counter: 0
   }
 ],
 game: {

@@ -102,8 +102,8 @@ const CardDisplay = ({propertyData, playerData, allPlayers, payRent, payTax, pay
       }
     }
 
-    if (propertyData.rent.length === 4){
-      const owner= parseInt(propertyData.owner)
+    if ((propertyData.rent.length === 4) && (propertyData.owner !== "")){
+      const owner = parseInt(propertyData.owner)
 
       if (index === allPlayers[owner].station_counter - 1){
         return <div className="green-rent"><p>{detail}</p><p>£{item}</p></div>
