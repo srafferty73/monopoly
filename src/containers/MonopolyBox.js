@@ -91,13 +91,15 @@ class MonopolyBox extends Component {
     if (currentCard.move_to !== ""){
       if (currentCard.move_to === "-3"){
         const updatedPosition = this.state.players[this.state.game.current_player].current_position - 3;
+
         this.setStateHelper("players", this.state.game.current_player, "current_position", updatedPosition);
       }
       else {
         const updatedPosition = parseInt(currentCard.move_to);
+        const previousPosition = this.state.players[this.state.game.current_player].current_position
         this.setStateHelper("players", this.state.game.current_player, "current_position", updatedPosition);
 
-        if ((updatedPosition < this.state.players[this.state.game.current_player].current_position) && (updatedPosition !== 10)){
+        if ((updatedPosition < previousPosition) && (updatedPosition !== 10)){
           const updatedFunds = this.state.players[this.state.game.current_player].money + 200;
           this.setStateHelper("players", this.state.game.current_player, "money", updatedFunds);
         }
