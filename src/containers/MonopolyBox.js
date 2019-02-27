@@ -323,7 +323,11 @@ class MonopolyBox extends Component {
     this.setStateHelper("properties", index, "owner", "");
     this.setStateHelper("players", indexOwner, "money", updatedFunds);
 
-    this.checkForSets();
+    this.setStateHelper("properties", index, "rent_status", 0);
+    const otherPropertiesArray = currentProperty.other_properties;
+    otherPropertiesArray.forEach((propertyIndex){
+      this.setStateHelper("properties", index, "rent_status", 0)
+    })
   }
 
   payRent(){
