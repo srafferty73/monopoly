@@ -14,8 +14,10 @@ const Home = () => (
     <span className='L'>L</span>
     <span className='Y'>Y</span>
     </h1>
-    <Link onClick="this.reloadRoute" to="/game">New Game</Link>{" "}
-    <Link to="/rules">Rules</Link>
+    <div className="splash-screen-buttons">
+      <Link onClick="this.reloadRoute" to="/game">New Game</Link>{" "}
+      <Link to="/rules">Rules</Link>
+    </div>
   </div>
 );
 
