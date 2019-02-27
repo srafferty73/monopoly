@@ -25,6 +25,8 @@ class MonopolyBox extends Component {
     this.buyProperty = this.buyProperty.bind(this);
     this.sellProperty = this.sellProperty.bind(this);
     this.buyHouses = this.buyHouses.bind(this);
+    this.mortgageProperty = this.mortgageProperty.bind(this);
+    this.unmortgageProperty = this.unmortgageProperty.bind(this);
     this.chanceCard = this.chanceCard.bind(this);
     this.chestCard = this.chestCard.bind(this);
   }
@@ -269,7 +271,7 @@ class MonopolyBox extends Component {
     const currentProperty = this.state.properties[currentPosition];
 
     if (currentProperty.owner !== ""){
-      if ((parseInt(currentProperty.owner) !== currentPlayer) && (currentProperty.owner !== "Admin")){
+      if ((parseInt(currentProperty.owner) !== currentPlayer) && (currentProperty.owner !== "Admin") && (currentProperty.mortgaged === false)){
         this.buttonToggleHelper('end-turn', 'add');
         // console.log("Pay Rent", currentProperty, currentPlayer);
       }
@@ -388,6 +390,24 @@ class MonopolyBox extends Component {
     })
   }
 
+  mortgageProperty(index){
+    const currentProperty = this.state.properties[index];
+    const indexOwner = parseInt(this.state.properties[index].owner);
+    const updatedFunds = this.state.players[indexOwner].money + (currentProperty.price)/2;
+    this.setStateHelper("players", indexOwner, "money", updatedFunds);
+    this.setStateHelper("properties", index, "mortgaged", true);
+  }
+
+  unmortgageProperty(index){
+    const currentProperty = this.state.properties[index];
+    const indexOwner = parseInt(this.state.properties[index].owner);
+    const updatedFunds = this.state.players[indexOwner].money - (currentProperty.price)*0.55;
+    console.log('updatedFunds', updatedFunds);
+    this.setStateHelper("players", indexOwner, "money", updatedFunds);
+    this.setStateHelper("properties", index, "mortgaged", false);
+  }
+
+
   payRent(){
     const currentProperty = this.state.properties[this.state.players[this.state.game.current_player].current_position];
     const theOwner = parseInt(currentProperty.owner);
@@ -496,7 +516,7 @@ class MonopolyBox extends Component {
 (
 
       <div className="monopoly-box">
-        <PlayerPropertyList player={this.state.players[0]} properties={player1Properties} buyHouses={this.buyHouses} sellProperty={this.sellProperty} currentPlayer={this.state.game.current_player}/>
+        <PlayerPropertyList player={this.state.players[0]} properties={player1Properties} buyHouses={this.buyHouses} sellProperty={this.sellProperty} mortgageProperty={this.mortgageProperty} unmortgageProperty={this.unmortgageProperty} currentPlayer={this.state.game.current_player}/>
         <div className="monopoly-container">
           <CardDisplay propertyData={this.state.properties[this.state.players[this.state.game.current_player].current_position]}
                        playerData={this.state.players[this.state.game.current_player]}
@@ -523,7 +543,7 @@ class MonopolyBox extends Component {
           <MonopolyList properties={row3} players={this.state.players}/>
           <MonopolyList properties={row4} players={this.state.players}/>
         </div>
-        <PlayerPropertyList player={this.state.players[1]} properties={player2Properties} buyHouses={this.buyHouses} sellProperty={this.sellProperty} currentPlayer={this.state.game.current_player}/>
+        <PlayerPropertyList player={this.state.players[1]} properties={player2Properties} buyHouses={this.buyHouses} sellProperty={this.sellProperty} mortgageProperty={this.mortgageProperty} unmortgageProperty={this.unmortgageProperty} currentPlayer={this.state.game.current_player}/>
         <Winner winner={this.state.game.winner}/>
       </div>
     )
