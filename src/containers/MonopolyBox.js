@@ -185,8 +185,8 @@ class MonopolyBox extends Component {
     this.buttonToggleHelper('dice-roll', 'add');
     const dice1 = Math.floor(Math.random() * (6) +1);
     const dice2 = Math.floor(Math.random() * (6) +1);
-    this.setStateHelper("game", "ignore", "current_roll1", 1);
-    this.setStateHelper("game", "ignore", "current_roll2", 1);
+    this.setStateHelper("game", "ignore", "current_roll1", dice1);
+    this.setStateHelper("game", "ignore", "current_roll2", dice2);
   }
 
   findNewPosition(){
@@ -399,7 +399,7 @@ class MonopolyBox extends Component {
   mortgageProperty(index){
     const currentProperty = this.state.properties[index];
     const indexOwner = parseInt(this.state.properties[index].owner);
-    const updatedFunds = this.state.players[indexOwner].money + (currentProperty.price)/2;
+    const updatedFunds = this.state.players[indexOwner].money + Math.round((currentProperty.price)/2);
     this.setStateHelper("players", indexOwner, "money", updatedFunds);
     this.setStateHelper("properties", index, "mortgaged", true);
   }
@@ -407,7 +407,7 @@ class MonopolyBox extends Component {
   unmortgageProperty(index){
     const currentProperty = this.state.properties[index];
     const indexOwner = parseInt(this.state.properties[index].owner);
-    const updatedFunds = this.state.players[indexOwner].money - (currentProperty.price)*0.55;
+    const updatedFunds = this.state.players[indexOwner].money - Math.round((currentProperty.price)*0.55);
     console.log('updatedFunds', updatedFunds);
     this.setStateHelper("players", indexOwner, "money", updatedFunds);
     this.setStateHelper("properties", index, "mortgaged", false);
