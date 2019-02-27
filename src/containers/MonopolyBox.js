@@ -26,7 +26,7 @@ class MonopolyBox extends Component {
     this.sellProperty = this.sellProperty.bind(this);
     this.buyHouses = this.buyHouses.bind(this);
     this.chanceCard = this.chanceCard.bind(this);
-    // this.chest = this.chest.bind(this);
+    this.chestCard = this.chestCard.bind(this);
   }
 
   componentDidMount(){
@@ -93,6 +93,13 @@ class MonopolyBox extends Component {
     }
   }
 
+  checkChest(){
+    if ((this.state.players[this.state.game.current_player].current_position === 2) || (this.state.players[this.state.game.current_player].current_position === 17) || (this.state.players[this.state.game.current_player].current_position === 33)){
+      console.log("Chest card");
+      this.buttonToggleHelper('end-turn', "add");
+    }
+  }
+
   chanceCard(){
     const currentCard = this.state.chance[this.state.game.chance_num-1];
     if (currentCard.move_to !== ""){
@@ -128,6 +135,43 @@ class MonopolyBox extends Component {
     this.buttonToggleHelper('end-turn', "remove");
     // this.setStateHelper("players", this.state.game.current_player, "status", "end");
   }
+
+
+    chestCard(){
+      const currentCard = this.state.chest[this.state.game.chest_num-1];
+      if (currentCard.move_to !== ""){
+        if (currentCard.move_to === "-3"){
+          const updatedPosition = this.state.players[this.state.game.current_player].current_position - 3;
+
+          this.setStateHelper("players", this.state.game.current_player, "current_position", updatedPosition);
+        }
+        else {
+          const updatedPosition = parseInt(currentCard.move_to);
+          const previousPosition = this.state.players[this.state.game.current_player].current_position
+          this.setStateHelper("players", this.state.game.current_player, "current_position", updatedPosition);
+
+          if ((updatedPosition < previousPosition) && (updatedPosition !== 10)){
+            const updatedFunds = this.state.players[this.state.game.current_player].money + 200;
+            this.setStateHelper("players", this.state.game.current_player, "money", updatedFunds);
+          }
+          if (updatedPosition === 10){
+            this.setStateHelper("players", this.state.game.current_player, "jail_counter", 1);
+            // this.buttonToggleHelper('pay-bail', "add");
+          }
+        }
+      }
+      if (currentCard.pay !== 0){
+        const payMoney = this.state.players[this.state.game.current_player].money - currentCard.pay;
+        this.setStateHelper("players", this.state.game.current_player, "money", payMoney);
+      }
+      if (currentCard.collect !== 0){
+        const collectMoney = this.state.players[this.state.game.current_player].money + currentCard.collect;
+        this.setStateHelper("players", this.state.game.current_player, "money", collectMoney);
+      }
+      this.buttonToggleHelper('chest-continue', "add");
+      this.buttonToggleHelper('end-turn', "remove");
+      // this.setStateHelper("players", this.state.game.current_player, "status", "end");
+    }
 
   diceRoll(){
     this.buttonToggleHelper('dice-roll', 'add');
@@ -386,6 +430,7 @@ class MonopolyBox extends Component {
     this.passGo();
     this.updateDoubleCounter();
     this.checkChance();
+    this.checkChest();
     this.goToJail();
     this.checkOwner();
   }
@@ -449,6 +494,7 @@ class MonopolyBox extends Component {
                        players={this.state.players}
                        chestNum={this.state.game.chest_num}
                        chestCards={this.state.chest}
+                       chestCard={this.chestCard}
                        />
           <DiceRoll playerMove={this.playerMove} endTurn={this.endTurn}/>
           <DiceNumbers dice1={this.state.game.current_roll1} dice2={this.state.game.current_roll2}/>

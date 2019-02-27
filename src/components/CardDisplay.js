@@ -1,6 +1,6 @@
 import React from 'react';
 
-const CardDisplay = ({propertyData, playerData, payRent, payTax, payBail, buyProperty, chanceCards, chanceNum, currentPlayer, dice1, dice2, chanceCard, players, chestNum, chestCards}) => {
+const CardDisplay = ({propertyData, playerData, payRent, payTax, payBail, buyProperty, chanceCards, chanceNum, currentPlayer, dice1, dice2, chanceCard, players, chestNum, chestCards, chestCard}) => {
 
   if (propertyData.color !== ""){
     var colorBox = <div id="card-display-color" className={propertyData.color}></div>
@@ -51,7 +51,7 @@ const CardDisplay = ({propertyData, playerData, payRent, payTax, payBail, buyPro
     console.log(randomCard);
     if (playerData.status === "start"){
     var chanceDescription = <p className="chanceDescription">{randomCard.description}</p>
-      var chestButton = <button id="chest-continue" className="card-display-pay" >Continue</button>
+      var chestButton = <button id="chest-continue" className="card-display-pay" onClick={chestCard}>Continue</button>
     }
   }
 

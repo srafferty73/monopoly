@@ -154,8 +154,8 @@ chance: [
       id: 4,
       description: "From sale of stock you get £50",
       move_to: "",
-      pay: 50,
-      collect: 0
+      pay: 0,
+      collect: 50
     },
     {
       id: 5,
@@ -203,8 +203,8 @@ chance: [
       id: 11,
       description: "School fees. Pay £50",
       move_to: "",
-      pay: 0,
-      collect: 50
+      pay: 50,
+      collect: 0
     },
     {
       id: 12,
