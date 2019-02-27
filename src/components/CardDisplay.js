@@ -102,7 +102,7 @@ const CardDisplay = ({propertyData, playerData, allPlayers, payRent, payTax, pay
       }
     }
 
-    if (propertyData.rent.length === 4){
+    if ((propertyData.rent.length === 4) && (propertyData.owner !== "")){
       const owner= parseInt(propertyData.owner)
 
       if (index === allPlayers[owner].station_counter - 1){
