@@ -85,6 +85,9 @@ const CardDisplay = ({propertyData, playerData, payRent, payTax, payBail, buyPro
       else if (index === 1) {
         detail = "Set"
       }
+      else if (index === 6){
+        detail = "Hotel"
+      }
       else {
         detail = `House ${index-1}`
       }
