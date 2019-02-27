@@ -322,6 +322,8 @@ class MonopolyBox extends Component {
 
     this.setStateHelper("properties", index, "owner", "");
     this.setStateHelper("players", indexOwner, "money", updatedFunds);
+
+    this.checkForSets();
   }
 
   payRent(){
