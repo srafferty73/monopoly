@@ -12,7 +12,10 @@ const Rules = () => {
           Play Game.
         </div>
         <div>
-          Finish Game & Go Home.
+          Finish Game.
+        </div>
+        <div>
+          Go Home.
         </div>
       </div>
 
