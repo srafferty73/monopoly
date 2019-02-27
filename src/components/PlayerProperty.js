@@ -3,7 +3,7 @@ import React from 'react';
 const PlayerProperty = ({currentPlayer, player, propertyData, buyHouses, sellProperty, mortgageProperty, unmortgageProperty}) => {
 
   if ((currentPlayer === parseInt(propertyData.owner)) && (player.status === "start")){
-    if ((propertyData.rent_status >= 1) && (propertyData.rent_status < 5) && (propertyData.mortgaged===false) && (propertyData.id !== 12) && (propertyData.id !== 28)){
+    if ((propertyData.rent_status >= 1) && (propertyData.rent_status < 5) && (propertyData.mortgaged===false) && (propertyData.position !== 12) && (propertyData.position !== 28)){
       var buyHousesButton = <button id="buy-houses" onClick={() => buyHouses(propertyData.position)}>Buy Houses</button>
     }
     else if ((propertyData.rent_status >= 1) && (propertyData.rent_status === 5)){
