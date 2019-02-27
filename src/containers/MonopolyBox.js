@@ -134,7 +134,9 @@ class MonopolyBox extends Component {
       this.setStateHelper("players", this.state.game.current_player, "money", collectMoney);
     }
     this.buttonToggleHelper('chance-continue', "add");
-    this.buttonToggleHelper('end-turn', "remove");
+    if (this.state.game.current_roll1 !== this.state.game.current_roll2){
+      this.buttonToggleHelper('end-turn', "remove");
+    }
     // this.setStateHelper("players", this.state.game.current_player, "status", "end");
   }
 
@@ -171,7 +173,11 @@ class MonopolyBox extends Component {
         this.setStateHelper("players", this.state.game.current_player, "money", collectMoney);
       }
       this.buttonToggleHelper('chest-continue', "add");
-      this.buttonToggleHelper('end-turn', "remove");
+      if (this.state.game.current_roll1 !== this.state.game.current_roll2){
+        this.buttonToggleHelper('end-turn', "remove");
+      }
+
+
       // this.setStateHelper("players", this.state.game.current_player, "status", "end");
     }
 
@@ -179,8 +185,8 @@ class MonopolyBox extends Component {
     this.buttonToggleHelper('dice-roll', 'add');
     const dice1 = Math.floor(Math.random() * (6) +1);
     const dice2 = Math.floor(Math.random() * (6) +1);
-    this.setStateHelper("game", "ignore", "current_roll1", dice1);
-    this.setStateHelper("game", "ignore", "current_roll2", dice2);
+    this.setStateHelper("game", "ignore", "current_roll1", 1);
+    this.setStateHelper("game", "ignore", "current_roll2", 1);
   }
 
   findNewPosition(){
