@@ -436,6 +436,7 @@ class MonopolyBox extends Component {
       this.setPlayerStatus("begin");
       if (this.state.game.current_roll1 !== this.state.game.current_roll2){
         this.buttonToggleHelper('end-turn', 'remove');
+        this.buttonToggleHelper('dice-roll', 'add');
       }
     }
     else if (currentProperty.other_properties.length === 3){
@@ -448,6 +449,7 @@ class MonopolyBox extends Component {
       if (this.state.game.current_roll1 !== this.state.game.current_roll2){
         this.buttonToggleHelper('pay-rent', 'add');
         this.buttonToggleHelper('end-turn', 'remove');
+        this.buttonToggleHelper('dice-roll', 'add');
       }
     }
     else {
@@ -461,6 +463,7 @@ class MonopolyBox extends Component {
       this.setPlayerStatus("begin");
       if (this.state.game.current_roll1 !== this.state.game.current_roll2){
         this.buttonToggleHelper('end-turn', 'remove');
+        this.buttonToggleHelper('dice-roll', 'add');
       }
     }
   }
