@@ -48,7 +48,7 @@ chance: [
   },
   {
     id: 2,
-    description: "Street Repairs - £40 per House",
+    description: "Street Repairs pay £40",
     move_to: "",
     pay: 40,
     collect: 0
