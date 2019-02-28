@@ -1,6 +1,6 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import anime from "animejs";
+// import anime from "animejs";
 
 const Home = () => (
   <div className="splash-screen">

@@ -4,17 +4,20 @@ import { Link } from "react-router-dom";
 const Rules = () => {
   return (
     <div className="rules">
-    <ol>
-      <li>
-        Start Game
-      </li>
-      <li>
-        Play Game
-      </li>
-      <li>
-        Finish Game & Go Home
-      </li>
-    </ol>
+      <div className="rules-main">
+        <div>
+          Start Game.
+        </div>
+        <div>
+          Play Game.
+        </div>
+        <div>
+          Finish Game.
+        </div>
+        <div>
+          Go Home.
+        </div>
+      </div>
 
 
     <Link to="/">Home</Link>

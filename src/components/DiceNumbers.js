@@ -1,6 +1,7 @@
 import React from 'react';
 
 const DiceNumbers = ({dice1, dice2}) => {
+  // Generates the correct image for dice one depending on the roll.
   if (dice1 === 1){
     var firstDice = <img src="dice_1.png" alt="First dice rolled one"/>
   }
@@ -20,6 +21,7 @@ const DiceNumbers = ({dice1, dice2}) => {
     firstDice = <img src="dice_6.png" alt="First dice rolled six"/>
   }
 
+  // Generates the correct image for dice two depending on the roll.
   if (dice2 === 1){
     var secondDice = <img src="dice_1.png" alt="Second dice rolled one"/>
   }
@@ -40,11 +42,11 @@ const DiceNumbers = ({dice1, dice2}) => {
   }
 
   return(
-  <div className="dice_numbers">
-    <div>{firstDice}</div>
-    <div>{secondDice}</div>
-  </div>
-)
+    <div className="dice_numbers">
+      <div>{firstDice}</div>
+      <div>{secondDice}</div>
+    </div>
+  )
 }
 
 export default DiceNumbers;

@@ -2,6 +2,7 @@ import React from 'react';
 
 const CardDisplay = ({propertyData, playerData, allPlayers, payRent, payTax, payBail, buyProperty, chanceCards, chanceNum, currentPlayer, dice1, dice2, chanceCard, players, chestNum, chestCards, chestCard}) => {
 
+  // Generate colour box if property has a colour.
   if (propertyData.color !== ""){
     var colorBox = <div id="card-display-color" className={propertyData.color}></div>
   }
@@ -9,6 +10,7 @@ const CardDisplay = ({propertyData, playerData, allPlayers, payRent, payTax, pay
     var noColorBox = <div className="no-color"></div>
   }
 
+  // Show price if unowned, or owner if owned.
   if (propertyData.price !== 0){
     if (propertyData.owner === ""){
       var priceBox = <h3 className ="card-display-price">£{propertyData.price}</h3>
@@ -24,10 +26,12 @@ const CardDisplay = ({propertyData, playerData, allPlayers, payRent, payTax, pay
     }
   }
 
+  // Description for the GO card.
   if (propertyData.name === "GO"){
     var goDescription = <p className="go-description">Collect £200</p>
   }
 
+  // Descriptions for Jail Card (In Jail/Just Visiting).
   if (propertyData.name === "Jail"){
     if (playerData.jail_counter > 0){
       var jailDescription = <div className="jail-description"><p>Roll a Double</p><p>or</p><p>Pay £50 Bail</p></div>
@@ -37,32 +41,37 @@ const CardDisplay = ({propertyData, playerData, allPlayers, payRent, payTax, pay
     }
   }
 
+  // Description for Chance Card.
   if (propertyData.name === "Chance"){
     const randomCard = chanceCards[chanceNum-1];
     console.log(randomCard);
     if (playerData.status === "start"){
-    var chanceDescription = <p className="chanceDescription">{randomCard.description}</p>
+      var chanceDescription = <p className="chanceDescription">{randomCard.description}</p>
       var chanceButton = <button id="chance-continue" className="card-display-pay" onClick={chanceCard}>Continue</button>
     }
   }
 
+  // Description for Community Chest Card.
   if (propertyData.name === "Community Chest"){
     const randomCard = chestCards[chestNum-1];
     console.log(randomCard);
     if (playerData.status === "start"){
-    chanceDescription = <p className="chanceDescription">{randomCard.description}</p>
+      chanceDescription = <p className="chanceDescription">{randomCard.description}</p>
       var chestButton = <button id="chest-continue" className="card-display-pay" onClick={chestCard}>Continue</button>
     }
   }
 
+  // Display the Pay Tax button if the property is owned by the 'Government'.
   if ((propertyData.owner === "Government") && (playerData.status === "start")){
     var payTaxButton = <button id="pay-tax" className="card-display-pay" onClick={payTax}>Pay Tax</button>
   }
 
+  // Display the Pay Bail button if In Jail.
   if ((propertyData.position === 10) && (playerData.jail_counter > 0) && (playerData.status ==="begin")){
     var payBailButton = <button id="pay-bail" className="card-display-pay" onClick={payBail}>Pay Bail</button>
   }
 
+  // Generate different rent lists for Tax, Utilities, Stations & Normal Properties.
   var rentPrices = propertyData.rent.map((item, index) => {
     if (propertyData.rent.length === 1){
       var detail = "Amount"
@@ -102,6 +111,7 @@ const CardDisplay = ({propertyData, playerData, allPlayers, payRent, payTax, pay
       }
     }
 
+    // Colours the current rent price of the current property in green.
     if ((propertyData.rent.length === 4) && (propertyData.owner !== "")){
       const owner = parseInt(propertyData.owner)
 
@@ -114,15 +124,13 @@ const CardDisplay = ({propertyData, playerData, allPlayers, payRent, payTax, pay
     }
     else {
       if (index === propertyData.rent_status){
-      return <div className="green-rent"><p>{detail}</p><p>£{item}</p></div>
+        return <div className="green-rent"><p>{detail}</p><p>£{item}</p></div>
       }
       else {
         return <div><p>{detail}</p><p>£{item}</p></div>
       }
     }
-
-
-})
+  })
 
 
   return(
