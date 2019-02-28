@@ -3,7 +3,7 @@ const data = {
 players: [
   {
     id: 0,
-    name: "John",
+    name: "Player 1",
     money: 1500,
     current_position: 0,
     status: "end",
@@ -13,7 +13,7 @@ players: [
   },
   {
     id: 1,
-    name: "Bill",
+    name: "Player 2",
     money: 1500,
     current_position: 0,
     status: "end",
