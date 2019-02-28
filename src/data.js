@@ -44,7 +44,7 @@ chance: [
     description: "Advance to GO",
     move_to: "0",
     pay: 0,
-    collect: 200
+    collect: 0
   },
   {
     id: 2,
@@ -136,7 +136,7 @@ chance: [
       description: "Advance to GO",
       move_to: "0",
       pay: 0,
-      collect: 200
+      collect: 0
     },
     {
       id: 2,
