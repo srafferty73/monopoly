@@ -425,6 +425,7 @@ class MonopolyBox extends Component {
       this.setStateHelper("players", theOwner, "money", updatedOwner);
       this.setStateHelper("players", this.state.game.current_player, "money", updatedPlayer);
       this.buttonToggleHelper('pay-rent', 'add');
+      this.setPlayerStatus("begin");
       if (this.state.game.current_roll1 !== this.state.game.current_roll2){
         this.buttonToggleHelper('end-turn', 'remove');
       }
@@ -434,6 +435,7 @@ class MonopolyBox extends Component {
       const updatedPlayer = this.state.players[this.state.game.current_player].money - currentProperty.rent[this.state.players[theOwner].station_counter - 1];
       this.setStateHelper("players", theOwner, "money", updatedOwner);
       this.setStateHelper("players", this.state.game.current_player, "money", updatedPlayer);
+      this.setPlayerStatus("begin");
       if (this.state.game.current_roll1 !== this.state.game.current_roll2){
         this.buttonToggleHelper('pay-rent', 'add');
         this.buttonToggleHelper('end-turn', 'remove');
@@ -446,6 +448,7 @@ class MonopolyBox extends Component {
       this.setStateHelper("players", theOwner, "money", updatedOwner);
       this.setStateHelper("players", this.state.game.current_player, "money", updatedPlayer);
       this.buttonToggleHelper('pay-rent', 'add');
+      this.setPlayerStatus("begin");
       if (this.state.game.current_roll1 !== this.state.game.current_roll2){
         this.buttonToggleHelper('end-turn', 'remove');
       }
