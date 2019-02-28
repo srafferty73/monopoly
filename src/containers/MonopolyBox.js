@@ -396,6 +396,11 @@ class MonopolyBox extends Component {
     otherPropertiesArray.forEach((propertyIndex) => {
       this.setStateHelper("properties", propertyIndex, "rent_status", 0)
     })
+
+    if ((index === 5) || (index===15) || (index===25) || (index===35)){
+      const updatedStationCounter = this.state.players[indexOwner].station_counter - 1
+      this.setStateHelper("players", indexOwner, "station_counter", updatedStationCounter)
+    }
   }
 
   mortgageProperty(index){
