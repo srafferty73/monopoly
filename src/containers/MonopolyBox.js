@@ -185,8 +185,8 @@ class MonopolyBox extends Component {
     this.buttonToggleHelper('dice-roll', 'add');
     const dice1 = Math.floor(Math.random() * (6) +1);
     const dice2 = Math.floor(Math.random() * (6) +1);
-    this.setStateHelper("game", "ignore", "current_roll1", dice1);
-    this.setStateHelper("game", "ignore", "current_roll2", dice2);
+    this.setStateHelper("game", "ignore", "current_roll1", 4);
+    this.setStateHelper("game", "ignore", "current_roll2", 4);
   }
 
   findNewPosition(){
@@ -427,6 +427,7 @@ class MonopolyBox extends Component {
       this.setStateHelper("players", theOwner, "money", updatedOwner);
       this.setStateHelper("players", this.state.game.current_player, "money", updatedPlayer);
       this.buttonToggleHelper('pay-rent', 'add');
+      this.buttonToggleHelper('dice-roll', 'remove');
       this.setPlayerStatus("begin");
       if (this.state.game.current_roll1 !== this.state.game.current_roll2){
         this.buttonToggleHelper('end-turn', 'remove');
@@ -438,6 +439,7 @@ class MonopolyBox extends Component {
       this.setStateHelper("players", theOwner, "money", updatedOwner);
       this.setStateHelper("players", this.state.game.current_player, "money", updatedPlayer);
       this.setPlayerStatus("begin");
+      this.buttonToggleHelper('dice-roll', 'remove');
       if (this.state.game.current_roll1 !== this.state.game.current_roll2){
         this.buttonToggleHelper('pay-rent', 'add');
         this.buttonToggleHelper('end-turn', 'remove');
@@ -450,6 +452,7 @@ class MonopolyBox extends Component {
       this.setStateHelper("players", theOwner, "money", updatedOwner);
       this.setStateHelper("players", this.state.game.current_player, "money", updatedPlayer);
       this.buttonToggleHelper('pay-rent', 'add');
+      this.buttonToggleHelper('dice-roll', 'remove');
       this.setPlayerStatus("begin");
       if (this.state.game.current_roll1 !== this.state.game.current_roll2){
         this.buttonToggleHelper('end-turn', 'remove');
