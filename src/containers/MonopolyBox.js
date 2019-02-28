@@ -259,8 +259,10 @@ class MonopolyBox extends Component {
       if (this.state.properties[this.state.players[this.state.game.current_player].current_position].owner ==="Government"){
 
       }
-      else {
+      else if (parseInt(this.state.properties[this.state.players[this.state.game.current_player].current_position].owner) === this.state.game.current_player){
         this.buttonToggleHelper('dice-roll', 'remove');
+      }
+      else {
       }
 
     }
