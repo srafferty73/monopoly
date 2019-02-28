@@ -497,6 +497,10 @@ class MonopolyBox extends Component {
     this.setPlayerStatus("begin");
     this.buttonToggleHelper('end-turn', 'add');
     this.buttonToggleHelper('dice-roll', 'remove');
+
+    if (this.state.game.current_roll1 === this.state.game.current_roll2){
+      this.buttonToggleHelper('pay-rent', 'remove');
+    }
     // this.buttonToggleHelper('pay-bail', 'remove');
   }
 
