@@ -15,7 +15,7 @@ const Home = () => (
     <span className='Y'>Y</span>
     </h1>
     <div className="splash-screen-buttons">
-      <Link onClick="this.reloadRoute" to="/game">New Game</Link>{" "}
+      <Link onClick="this.reloadRoute" to="/playerSelect">New Game</Link>{" "}
       <Link to="/rules">Rules</Link>
     </div>
   </div>

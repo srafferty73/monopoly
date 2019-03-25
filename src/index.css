@@ -60,6 +60,16 @@ code {
   justify-content: center;
 }
 
+.name-submit{
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: space-around;
+  width: 100vw;
+  position: relative;
+  top: -250px;
+}
+
 .splash-screen a {
   text-decoration: none;
   font-weight: 700;

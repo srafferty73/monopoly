@@ -32,7 +32,7 @@ class MonopolyBox extends Component {
   }
 
   componentDidMount(){
-    const url = 'http://localhost:5000/api/properties'
+    const url = 'http://localhost:5000/api/properties';
     const request = new XMLHttpRequest()
     request.open ('GET', url)
 
