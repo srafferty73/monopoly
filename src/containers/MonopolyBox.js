@@ -517,9 +517,6 @@ class MonopolyBox extends Component {
   }
 
   render(){
-
-
-
     const player1Properties = this.state.properties.filter((property) => {
       return parseInt(property.owner) === 0;
     });
